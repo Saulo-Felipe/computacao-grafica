@@ -1,13 +1,24 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Computação Grafica - Renderização do Pixel</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Lab 01</title>
+</head>
+<body>
+
+  <div class="p-10">
+    <div class="mb-5 flex gap-2">
+      <input class="border p-2" placeholder="X" id="x" />
+      <input class="border p-2" placeholder="Y" id="y" />
+      <button class="bg-blue-600 rounded-md px-2 text-white">Plotar na tela</button>
+    </div>
+
+    <canvas class="rounded-md" id="screen" width="720" height="480"></canvas>
+  </div>
+
+
+  <script src="./index.js"></script>
+</body>
 </html>
