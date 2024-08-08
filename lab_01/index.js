@@ -14,7 +14,7 @@ ctx.fillRect(0, 0, canvasElement.width, canvasElement.height);
 
 function drawPixel(x, y, color = 'red') {
     ctx.fillStyle = color;
-    ctx.fillRect(x, y, 3, 3); // Tamanho do pixel (3x3)
+    ctx.fillRect(x, y, 1, 1); // Tamanho do pixel (3x3)
     console.log(`Drawn at (x, y): (${x}, ${y})`);
 }
 
@@ -78,7 +78,8 @@ document.querySelector("#update-cord").addEventListener("click", () => {
     document.querySelector("#ndc_to_dc").innerHTML = `DC (Dispositivo): X = ${dcx}, Y = ${dcy}`;
 
     // Desenha o pixel na tela
-    drawPixel(dcx, dcy);
+    // drawPixel(dcx, dcy);
+    drawPixel(x, y);
     
     // Coordenadas INP diretamente para DC
     const { dcx: dcx_inp, dcy: dcy_inp } = inp_to_dc(x, y, ...INTERVALO_X_INP, ...INTERVALO_Y_INP, ...INTERVALO_X_DC, ...INTERVALO_Y_DC);
