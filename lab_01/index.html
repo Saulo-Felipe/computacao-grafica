@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Lab 01</title>
 </head>
+
 <body class="font-sans">
+
     <div class="flex p-10 gap-6">
         <div>
             <div class="mb-5 flex gap-2">
@@ -15,11 +18,16 @@
                 <button class="bg-blue-600 rounded-md px-2 text-white" id="update-cord">Plotar na tela</button>
             </div>
 
-            <canvas id="screen" width="720" height="480" class="border"></canvas>
+            <div class="relative w-[720px] h-[480px]">
+                <canvas id="screen" width="720" height="480"></canvas>
+                <span class="w-[1px] top-0 left-[50%] bg-red-500 absolute h-full"></span>
+                <span class="h-[1px] top-[50%] left-0 bg-red-500 absolute w-full"></span>
+            </div>
         </div>
 
         <div class="bg-[#cfcfcf] w-[250px] rounded-md p-6 flex flex-col">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/7/77/Marca-da-UEPB-Aplica%C3%A7%C3%A3o-Colorida-em-PNG-1.png" class="w-[30%] self-center" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/77/Marca-da-UEPB-Aplica%C3%A7%C3%A3o-Colorida-em-PNG-1.png"
+                class="w-[30%] self-center" />
             <span class="h-[1px] bg-gray-400 mt-6 rounded-md"></span>
             <div class="flex mt-6 gap-2">
                 <span class="font-bold">Cordenada X: </span>
@@ -31,19 +39,21 @@
             </div>
             <section class="mt-10">
                 <div class="mb-4">
-                    <h2 class="text-xl font-bold">INP para NDC</h2>
+                    <h2 class="text-xl font-bold">USER para NDC</h2>
                     <h4 class="text-xs">Do usuário para normalizada</h4>
-                    <span id="inp_to_ndc" class="m-3 block"></span>
+                    <span id="inp_to_ndc" class="mt-2 block">(0,0)</span>
                 </div>
+
                 <div class="mb-4">
                     <h2 class="text-xl font-bold">NDC para DC</h2>
                     <h4 class="text-xs">Normalizada para dispositivo</h4>
-                    <span id="ndc_to_dc" class="m-3 block"></span>
+                    <span id="ndc_to_dc" class="mt-2 block">(0,0)</span>
                 </div>
+
                 <div class="mb-4">
-                    <h2 class="text-xl font-bold">INP para DC</h4>
+                    <h2 class="text-xl font-bold">NDC to USER</h2>
                     <h4 class="text-xs">Do usuário para do dispositivo</h4>
-                    <span id="inp_to_dc" class="m-3 block"></span>
+                    <span id="inp_to_dc" class="mt-2 block">(0,0)</span>
                 </div>
             </section>
         </div>
@@ -51,4 +61,5 @@
 
     <script src="./index.js"></script>
 </body>
+
 </html>
