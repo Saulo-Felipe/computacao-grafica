@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+
+  <main class="w-[100vw] h-[100vh] flex">
+    <div class="flex-[0.25] bg-gray-100 p-10 flex flex-col gap-5">
+      <div class="flex flex-col gap-2">
+        <label>Forma</label>
+        <select class="w-full p-2 rounded-md border" value="straight-dda" id="form-type">
+          <option value="elipse">Circunferência - Elipse</option>
+          <option value="midpoint">Circunfêrencia - Ponto médio</option>
+          <option value="explicit-equation" disabled>Circunfêrencia - Equação Explicita</option>
+          <option value="trigonometric">Circunfêrencia - Trigonometrico</option>
+          <option value="straight-dda">Reta - DDA</option>
+          <option value="straight-midpoint">Reta - Ponto médio</option>
+        </select>
+      </div>
+
+      <div id="alterable" class="flex flex-col gap-2">
+        <div class="flex flex-col gap-2 elipse">
+          <label>Semi-eixo maior:</label>
+          <input class="w-full p-2 rounded-md border" type="number" id="semi-axle-max" />
+        </div>
+
+        <div class="flex flex-col gap-2 elipse">
+          <label>Semi-eixo menor:</label>
+          <input class="w-full p-2 rounded-md border" type="number" id="semi-axle-min" />
+        </div>
+
+        <div class="flex flex-col gap-2 midpoint trigonometric hidden">
+          <label>Raio:</label>
+          <input class="w-full p-2 rounded-md border" type="number" id="radius" />
+        </div>
+
+        <div class="flex flex-col gap-2 midpoint trigonometric elipse">
+          <label>Centro X:</label>
+          <input class="w-full p-2 rounded-md border" type="number" id="center-x" />
+        </div>
+  
+        <div class="flex flex-col gap-2 midpoint trigonometric elipse">
+          <label>Centro Y:</label>
+          <input class="w-full p-2 rounded-md border" type="number" id="center-y" />
+        </div>
+
+        <div class="flex flex-col gap-2 straight-dda straight-midpoint hidden">
+          <label>X 1:</label>
+          <input class="w-full p-2 rounded-md border" type="number" id="x-1" />
+        </div>
+
+        <div class="flex flex-col gap-2 straight-dda straight-midpoint hidden">
+          <label>Y 1:</label>
+          <input class="w-full p-2 rounded-md border" type="number" id="y-1" />
+        </div>
+        
+        <div class="flex flex-col gap-2 straight-dda straight-midpoint hidden">
+          <label>X 2:</label>
+          <input class="w-full p-2 rounded-md border" type="number" id="x-2" />
+        </div>
+
+        <div class="flex flex-col gap-2 straight-dda straight-midpoint hidden">
+          <label>Y 2:</label>
+          <input class="w-full p-2 rounded-md border" type="number" id="y-2" />
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <label>Tipo da transformação</label>
+        <select class="w-full p-2 rounded-md border">
+          <option value="0">Nenhuma</option>
+          <option value="1">Translação</option>
+          <option value="2">Rotação</option>
+          <option value="3">Escala</option>
+        </select>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4">
+        <button class="border p-2 px-6 rounded-md bg-gray-400 text-white">Limpar</button>
+        <button class="border p-2 px-6 rounded-md bg-green-600 text-white" id="handle-plot">Plotar</button>
+      </div>
+
+    </div>
+
+    <div class="flex-[0.75] bg-gray-200 flex items-center justify-center">
+      <div class="w-[600px] h-[600px] relative bg-white">
+        <span class="absolute w-[1px] h-full bg-black left-1/2"></span>
+        <span class="absolute h-[1px] w-full bg-black top-1/2"></span>
+        <canvas width="600px" height="600px" class="border-[1px] border-black absolute" id="canvas"></canvas>
+      </div>
+    </div>
+  </main>
+
+  <script src="./circumference/elipse/index.js"></script>
+  <script src="./circumference/midpoint/index.js"></script>
+  <script src="./circumference/trigonometric/index.js"></script>
+  <script src="./straight/dda/index.js"></script>
+  <script src="./straight/midpoint/index.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
