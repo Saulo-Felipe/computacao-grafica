@@ -15,9 +15,30 @@ function draw_ellipse_pixels(x, y, color) {
     draw_pixel(centerXValue + x, centerYValue - y, false, "#FF0000");
     draw_pixel(centerXValue - x, centerYValue - y, false, "#FF0000");
   }
+
+  else if (systemData.transformationType === "rotation") {
+    // Rotacionando para cada ponto individualmente
+    let theta = Number(document.getElementById("transformation-radius").value) * (Math.PI / 180); // Convertendo para radianos
+
+    // Rotaciona o ponto de cada quadrante individualmente
+    let x1 = x * Math.cos(theta) - y * Math.sin(theta);
+    let y1 = x * Math.sin(theta) + y * Math.cos(theta);
+    let x2 = -x * Math.cos(theta) - y * Math.sin(theta);
+    let y2 = -x * Math.sin(theta) + y * Math.cos(theta);
+    let x3 = x * Math.cos(theta) + y * Math.sin(theta);
+    let y3 = x * Math.sin(theta) - y * Math.cos(theta);
+    let x4 = -x * Math.cos(theta) + y * Math.sin(theta);
+    let y4 = -x * Math.sin(theta) - y * Math.cos(theta);
+
+    // Desenha os quatro pontos rotacionados
+    draw_pixel(centerXValue + x1, centerYValue + y1, false, "#FF0000"); // 1º quadrante
+    draw_pixel(centerXValue + x2, centerYValue + y2, false, "#FF0000"); // 2º quadrante
+    draw_pixel(centerXValue + x3, centerYValue + y3, false, "#FF0000"); // 3º quadrante
+    draw_pixel(centerXValue + x4, centerYValue + y4, false, "#FF0000"); // 4º quadrante
+  }
 }
 
-function midpoint_ellipse(semiAxleMax, semiAxleMin, color="#000") {
+function midpoint_ellipse(semiAxleMax, semiAxleMin, color = "#000") {
   let x = 0;
   let y = semiAxleMin;
   const semiAxleMaxSquared = semiAxleMax * semiAxleMax; // a
