@@ -11,10 +11,10 @@
 <body>
 
   <main class="w-[100vw] h-[100vh] flex">
-    <div class="flex-[0.25] bg-gray-100 p-10 flex flex-col gap-5">
-      <div class="flex flex-col gap-2">
+    <div class="w-[25%] bg-gray-100 px-6 py-4 flex flex-col gap-5">
+      <div class="flex flex-col gap-1">
         <label>Forma</label>
-        <select class="w-full p-2 rounded-md border" value="straight-dda" id="form-type">
+        <select class="w-full p-2 rounded-md border" id="form-type">
           <option value="elipse">Circunferência - Elipse</option>
           <option value="midpoint">Circunfêrencia - Ponto médio</option>
           <option value="explicit-equation" disabled>Circunfêrencia - Equação Explicita</option>
@@ -25,47 +25,47 @@
       </div>
 
       <div id="alterable" class="flex flex-col gap-2">
-        <div class="flex flex-col gap-2 elipse">
+        <div class="flex flex-col gap-1 elipse">
           <label>Semi-eixo maior:</label>
           <input class="w-full p-2 rounded-md border" type="number" id="semi-axle-max" />
         </div>
 
-        <div class="flex flex-col gap-2 elipse">
+        <div class="flex flex-col gap-1 elipse">
           <label>Semi-eixo menor:</label>
           <input class="w-full p-2 rounded-md border" type="number" id="semi-axle-min" />
         </div>
 
-        <div class="flex flex-col gap-2 midpoint trigonometric hidden">
+        <div class="flex flex-col gap-1 midpoint trigonometric hidden">
           <label>Raio:</label>
           <input class="w-full p-2 rounded-md border" type="number" id="radius" />
         </div>
 
-        <div class="flex flex-col gap-2 midpoint trigonometric elipse">
+        <div class="flex flex-col gap-1 midpoint trigonometric elipse">
           <label>Centro X:</label>
           <input class="w-full p-2 rounded-md border" type="number" id="center-x" />
         </div>
   
-        <div class="flex flex-col gap-2 midpoint trigonometric elipse">
+        <div class="flex flex-col gap-1 midpoint trigonometric elipse">
           <label>Centro Y:</label>
           <input class="w-full p-2 rounded-md border" type="number" id="center-y" />
         </div>
 
-        <div class="flex flex-col gap-2 straight-dda straight-midpoint hidden">
+        <div class="flex flex-col gap-1 straight-dda straight-midpoint hidden">
           <label>X 1:</label>
           <input class="w-full p-2 rounded-md border" type="number" id="x-1" />
         </div>
 
-        <div class="flex flex-col gap-2 straight-dda straight-midpoint hidden">
+        <div class="flex flex-col gap-1 straight-dda straight-midpoint hidden">
           <label>Y 1:</label>
           <input class="w-full p-2 rounded-md border" type="number" id="y-1" />
         </div>
         
-        <div class="flex flex-col gap-2 straight-dda straight-midpoint hidden">
+        <div class="flex flex-col gap-1 straight-dda straight-midpoint hidden">
           <label>X 2:</label>
           <input class="w-full p-2 rounded-md border" type="number" id="x-2" />
         </div>
 
-        <div class="flex flex-col gap-2 straight-dda straight-midpoint hidden">
+        <div class="flex flex-col gap-1 straight-dda straight-midpoint hidden">
           <label>Y 2:</label>
           <input class="w-full p-2 rounded-md border" type="number" id="y-2" />
         </div>
@@ -73,12 +73,43 @@
 
       <div class="flex flex-col gap-2">
         <label>Tipo da transformação</label>
-        <select class="w-full p-2 rounded-md border">
-          <option value="0">Nenhuma</option>
-          <option value="1">Translação</option>
-          <option value="2">Rotação</option>
-          <option value="3">Escala</option>
+        <select class="w-full p-2 rounded-md border" id="transformation-type">
+          <option value="none">Nenhuma</option>
+          <option value="translation">Translação</option>
+          <option value="rotation">Rotação</option>
+          <option value="scale">Escala</option>
         </select>
+      </div>
+
+      <div id="alterable2" class="flex flex-col gap-2">
+        <div class="flex flex-col gap-2 rotation hidden">
+          <label>Graus:</label>
+          <input class="w-full p-2 rounded-md border" type="number" id="transformation-radius" />
+        </div>
+
+        <div class="flex gap-2 gap-2 scale hidden">
+          <div class="flex flex-col w-[calc(50%_-_0.25rem)]">
+            <label>SX:</label>
+            <input class="p-2 rounded-md border w-[-webkit-fill-available]" type="number" id="sx" />
+          </div>
+
+          <div class="flex flex-col w-[calc(50%_-_0.25rem)]">
+            <label>SY:</label>
+            <input class=" p-2 rounded-md border w-[-webkit-fill-available]" type="number" id="sy" />
+          </div>
+        </div>
+
+        <div class="flex gap-2 gap-2 translation hidden">
+          <div class="flex flex-col w-[calc(50%_-_0.25rem)]">
+            <label>TX:</label>
+            <input class="p-2 rounded-md border w-[-webkit-fill-available]" type="number" id="tx" />
+          </div>
+
+          <div class="flex flex-col w-[calc(50%_-_0.25rem)]">
+            <label>TY:</label>
+            <input class="p-2 rounded-md border w-[-webkit-fill-available]" type="number" id="ty" />
+          </div>
+        </div>
       </div>
 
       <div class="grid grid-cols-2 gap-4">
@@ -88,7 +119,7 @@
 
     </div>
 
-    <div class="flex-[0.75] bg-gray-200 flex items-center justify-center">
+    <div class="flex-1 bg-gray-200 flex items-center justify-center">
       <div class="w-[600px] h-[600px] relative bg-white">
         <span class="absolute w-[1px] h-full bg-black left-1/2"></span>
         <span class="absolute h-[1px] w-full bg-black top-1/2"></span>

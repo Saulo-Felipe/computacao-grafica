@@ -35,3 +35,29 @@ function straightMidpoint() {
     draw_pixel(x, y, true);
   }
 }
+// function translateStraightMid(){
+//   const newX = Number(document.getElementById("x-new").value);
+//   const newy = Number(document.getElementById("y-new").value);
+//   const x1 = Number(document.getElementById("x-1").value);
+//   const y1 = Number(document.getElementById("y-1").value);
+//   const x2 = Number(document.getElementById("x-2").value);
+//   const y2 = Number(document.getElementById("y-2").value);
+//   // let dx = Math.abs(x2 - x1);
+//   // let dy = Math.abs(y2 - y1);
+//   // let p = 2 * dy - dx;
+//   // let twoDy = 2 * dy;
+//   // let twoDyMinusDx = 2 * (dy - dx);
+
+//   // let x, y;
+//   while (x < x2) {
+//     x += 1;
+//     if (p < 0) {
+//       p += twoDy;
+//     } else {
+//       y += 1;
+//       p += twoDyMinusDx;
+//     }
+
+//     draw_pixel(x+newX, y+newY, true);
+//   }
+// }
