@@ -17,7 +17,7 @@
         <select class="w-full p-2 rounded-md border" value="straight-dda" id="form-type">
           <option value="elipse">Circunferência - Elipse</option>
           <option value="midpoint">Circunfêrencia - Ponto médio</option>
-          <option value="explicit-equation" disabled>Circunfêrencia - Equação Explicita</option>
+          <option value="explicit-equation">Circunfêrencia - Equação Explicita</option>
           <option value="trigonometric">Circunfêrencia - Trigonometrico</option>
           <option value="straight-dda">Reta - DDA</option>
           <option value="straight-midpoint">Reta - Ponto médio</option>
@@ -35,17 +35,17 @@
           <input class="w-full p-2 rounded-md border" type="number" id="semi-axle-min" />
         </div>
 
-        <div class="flex flex-col gap-2 midpoint trigonometric hidden">
+        <div class="flex flex-col gap-2 midpoint trigonometric hidden explicit-equation">
           <label>Raio:</label>
           <input class="w-full p-2 rounded-md border" type="number" id="radius" />
         </div>
 
-        <div class="flex flex-col gap-2 midpoint trigonometric elipse">
+        <div class="flex flex-col gap-2 midpoint trigonometric elipse explicit-equation">
           <label>Centro X:</label>
           <input class="w-full p-2 rounded-md border" type="number" id="center-x" />
         </div>
   
-        <div class="flex flex-col gap-2 midpoint trigonometric elipse">
+        <div class="flex flex-col gap-2 midpoint trigonometric elipse explicit-equation">
           <label>Centro Y:</label>
           <input class="w-full p-2 rounded-md border" type="number" id="center-y" />
         </div>
@@ -97,12 +97,13 @@
     </div>
   </main>
 
+  <script src="script.js"></script>
   <script src="./circumference/elipse/index.js"></script>
   <script src="./circumference/midpoint/index.js"></script>
   <script src="./circumference/trigonometric/index.js"></script>
+  <script src="./circumference/explicit/index.js"></script>
   <script src="./straight/dda/index.js"></script>
   <script src="./straight/midpoint/index.js"></script>
-  <script src="script.js"></script>
 </body>
 
 </html>

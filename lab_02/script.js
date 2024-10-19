@@ -22,7 +22,7 @@ function plot() {
   const data = {
     "elipse": elipse, // elipse
     "midpoint": midpoint, // Ponto médio
-    "explicit-equation": () => "Equação", // Equação explicita +18
+    "explicit-equation": explicit_circle, // Equação explicita +18
     "trigonometric": trigonometric, // Trigonometrico
     "straight-dda": straightDDA, // reta dda
     "straight-midpoint": straightMidpoint // reta midpoint
