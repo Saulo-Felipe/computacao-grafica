@@ -1,4 +1,5 @@
 // events
+document.getElementById("handle-clear").addEventListener("click", clear);
 document.getElementById("handle-plot").addEventListener("click", plot);
 document.getElementById("form-type").addEventListener("change", handleChangeSelect);
 document.getElementById("transformation-type").addEventListener("change", () => handleChangeSelect(true));
@@ -22,6 +23,21 @@ function getUpdatedCenteredValues() {
     centerYValue: canvasHeight / 2 + Number(document.getElementById("center-y").value)
   }
 }
+
+function clear() {
+  ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+
+  
+  document.getElementById("semi-axle-max").value = 0;
+  document.getElementById("semi-axle-min").value = 0;
+  
+  document.getElementById("center-x").value = 0;
+  document.getElementById("center-y").value = 0;
+  
+  systemData.radius = 0;
+
+}
+
 
 function plot() {
   const formType = document.getElementById("form-type").value;
