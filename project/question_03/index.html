@@ -16,7 +16,7 @@
       <div class="flex flex-col gap-2 ">
         <label>Dimensão da trasformação</label>
 
-        <select class="w-full p-2 rounded-md border" id="transformation-type">
+        <select class="w-full p-2 rounded-md border" id="form-type">
           <option value="2d">2D</option>
           <option value="3d">3D</option>
         </select>
@@ -57,7 +57,8 @@
         <select class="w-full p-2 rounded-md border" id="transformation-type">
           <option value="none">Nenhuma</option>
           <option value="translation">Translação</option>
-          <option value="rotation">Rotação</option>
+          <option value="rotation">Rotação horária</option>
+          <option value="rotation-anti">Rotação anti-horária</option>
           <option value="scale">Escala</option>
           <option value="reflection">Reflexão</option>
           <option value="shear">Cisalhamento</option>
@@ -65,7 +66,7 @@
       </div>
 
       <div id="alterable2" class="flex flex-col gap-2">
-        <div class="flex flex-col gap-2 rotation hidden">
+        <div class="flex flex-col gap-2 rotation rotation_antihoraria hidden">
           <label>Graus:</label>
           <input class="w-full p-2 rounded-md border" type="number" id="transformation-radius" />
         </div>
@@ -97,13 +98,13 @@
         <div></div>
 
         <div class="flex gap-2 gap-2 shear hidden">
-          <div class="flex flex-col w-[calc(50%_-_0.25rem)]">
-            <label>Cisalhamento em X:</label>
+          <div class="flex flex-col w-[calc(50%_-_0.25rem)] ">
+            <label>shX:</label>
             <input class="p-2 rounded-md border w-[-webkit-fill-available]" type="number" id="shx" />
           </div>
-
+        
           <div class="flex flex-col w-[calc(50%_-_0.25rem)]">
-            <label>Cisalhamento em Y:</label>
+            <label>shY:</label>
             <input class="p-2 rounded-md border w-[-webkit-fill-available]" type="number" id="shy" />
           </div>
         </div>
@@ -127,7 +128,7 @@
 
   <script src="../question_01/script.js"></script>
   <script src="../question_01/straight/dda.js"></script>
-  <script src="../question_03/2d/triangle.js"></script>
+  <script src="../question_03/2d/rectangle.js"></script>
 </body>
 
 </html>
