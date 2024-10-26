@@ -12,17 +12,18 @@ function draw_triangle() {
   const y4 = document.getElementById("y4").value
 
 
-  if (isInvalidTriangle(x1, y1, x2, y2, x3, y3, x4, y4)) {
+  if (isValidTriangle(x1, y1, x2, y2, x3, y3)) {
     straightDDA(x1, y1, x2, y2);
     straightDDA(x2, y2, x3, y3);
-    straightDDA(x3, y3, x4, y4);
-    straightDDA(x4, y4, x1, y1);
+    // straightDDA(x3, y3, x4, y4);
+    // straightDDA(x4, y4, x1, y1);
+    straightDDA(x3, y3, x1, y1);
   } else {
-    alert("Suas cordenadas não formam um triângulo válido!")
+    alert("Suas cordenadas não formam um triangulo válido!")
   }
 }
 
-function isInvalidTriangle(x1, y1, x2, y2, x3, y3, x4, y4) {
+function isValidTriangle(x1, y1, x2, y2, x3, y3) {
     const area = x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2);
 
     return area !== 0;

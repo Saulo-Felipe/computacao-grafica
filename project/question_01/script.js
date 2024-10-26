@@ -69,7 +69,7 @@ function handleChangeSelect(isTransformation=false) {
     .forEach(element => element.classList.remove("hidden"));
 }
 
-function draw_pixel(x, y, adjusteToCenter=false) {
+function drawPixel(x, y, adjusteToCenter=false) {
   ctx.fillStyle = "#000";
 
   if (adjusteToCenter) {
