@@ -10,7 +10,7 @@ function trigonometric() {
     const [px, py] = [centerXValue + x, centerYValue - y];
     
     console.log({x, y})
-    draw_pixel(Math.round(px), Math.round(py));
+    drawPixel(Math.round(px), Math.round(py));
   }
 
   if (systemData.transformationType === "translation") {
@@ -26,7 +26,7 @@ function trigonometric() {
       const [px, py] = [centerXValue + x + tx, centerYValue - y + ty];
       
       console.log({x, y})
-      draw_pixel(Math.round(px), Math.round(py), false, "#FF0000");
+      drawPixel(Math.round(px), Math.round(py), false, "#FF0000");
     }
   }
 
@@ -42,7 +42,7 @@ function trigonometric() {
 
       const [px, py] = [centerXValue + x, centerYValue - y];
 
-      draw_pixel(Math.round(px), Math.round(py), false, "#FF0000");
+      drawPixel(Math.round(px), Math.round(py), false, "#FF0000");
     }
   }
 }

@@ -1,10 +1,10 @@
 function draw_ellipse_pixels(x, y, color) {
   let { centerXValue, centerYValue } = getUpdatedCenteredValues();
 
-  draw_pixel(centerXValue + x, centerYValue + y, false, color); //1º quadrante
-  draw_pixel(centerXValue - x, centerYValue + y, false, color); //2º quadrante
-  draw_pixel(centerXValue + x, centerYValue - y, false, color); //3º quadrante
-  draw_pixel(centerXValue - x, centerYValue - y, false, color); //4º quadrante
+  drawPixel(centerXValue + x, centerYValue + y, false, color); //1º quadrante
+  drawPixel(centerXValue - x, centerYValue + y, false, color); //2º quadrante
+  drawPixel(centerXValue + x, centerYValue - y, false, color); //3º quadrante
+  drawPixel(centerXValue - x, centerYValue - y, false, color); //4º quadrante
 
 }
 

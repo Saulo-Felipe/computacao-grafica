@@ -1,19 +1,19 @@
 function draw_ellipse_pixels(x, y, color) {
   let { centerXValue, centerYValue } = getUpdatedCenteredValues();
 
-  draw_pixel(centerXValue + x, centerYValue + y, false, color); //1º quadrante
-  draw_pixel(centerXValue - x, centerYValue + y, false, color); //2º quadrante
-  draw_pixel(centerXValue + x, centerYValue - y, false, color); //3º quadrante
-  draw_pixel(centerXValue - x, centerYValue - y, false, color); //4º quadrante
+  drawPixel(centerXValue + x, centerYValue + y, false, color); //1º quadrante
+  drawPixel(centerXValue - x, centerYValue + y, false, color); //2º quadrante
+  drawPixel(centerXValue + x, centerYValue - y, false, color); //3º quadrante
+  drawPixel(centerXValue - x, centerYValue - y, false, color); //4º quadrante
 
   if (systemData.transformationType === "translation") {
     centerXValue += Number(document.getElementById("tx").value);
     centerYValue += Number(document.getElementById("ty").value);
 
-    draw_pixel(centerXValue + x, centerYValue + y, false, "#FF0000");
-    draw_pixel(centerXValue - x, centerYValue + y, false, "#FF0000");
-    draw_pixel(centerXValue + x, centerYValue - y, false, "#FF0000");
-    draw_pixel(centerXValue - x, centerYValue - y, false, "#FF0000");
+    drawPixel(centerXValue + x, centerYValue + y, false, "#FF0000");
+    drawPixel(centerXValue - x, centerYValue + y, false, "#FF0000");
+    drawPixel(centerXValue + x, centerYValue - y, false, "#FF0000");
+    drawPixel(centerXValue - x, centerYValue - y, false, "#FF0000");
   }
 
   else if (systemData.transformationType === "rotation") {
@@ -31,10 +31,10 @@ function draw_ellipse_pixels(x, y, color) {
     let y4 = -x * Math.sin(theta) - y * Math.cos(theta);
 
     // Desenha os quatro pontos rotacionados
-    draw_pixel(centerXValue + x1, centerYValue + y1, false, "#FF0000"); // 1º quadrante
-    draw_pixel(centerXValue + x2, centerYValue + y2, false, "#FF0000"); // 2º quadrante
-    draw_pixel(centerXValue + x3, centerYValue + y3, false, "#FF0000"); // 3º quadrante
-    draw_pixel(centerXValue + x4, centerYValue + y4, false, "#FF0000"); // 4º quadrante
+    drawPixel(centerXValue + x1, centerYValue + y1, false, "#FF0000"); // 1º quadrante
+    drawPixel(centerXValue + x2, centerYValue + y2, false, "#FF0000"); // 2º quadrante
+    drawPixel(centerXValue + x3, centerYValue + y3, false, "#FF0000"); // 3º quadrante
+    drawPixel(centerXValue + x4, centerYValue + y4, false, "#FF0000"); // 4º quadrante
   }
 }
 

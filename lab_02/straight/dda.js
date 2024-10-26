@@ -17,11 +17,11 @@ function straightDDA() {
   let x = x1;
   let y = y1;
 
-  draw_pixel(Math.round(x), Math.round(y), true);
+  drawPixel(Math.round(x), Math.round(y), true);
 
   for (let i = 0; i < length; i++) {
     x += Xinc;
     y += Yinc;
-    draw_pixel(Math.round(x), Math.round(y), true);
+    drawPixel(Math.round(x), Math.round(y), true);
   }
 }

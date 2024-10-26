@@ -21,7 +21,7 @@ function straightMidpoint() {
     y = y1;
   }
 
-  draw_pixel(x, y, true);
+  drawPixel(x, y, true);
 
   while (x < x2) {
     x += 1;
@@ -32,6 +32,6 @@ function straightMidpoint() {
       p += twoDyMinusDx;
     }
 
-    draw_pixel(x, y, true);
+    drawPixel(x, y, true);
   }
 }

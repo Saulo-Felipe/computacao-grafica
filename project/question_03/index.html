@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>PROJETO DO FINAL DOS TEMPOS</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
@@ -12,40 +12,48 @@
 
   <main class="w-[100vw] h-[100vh] flex">
     <div class="flex-[0.25] bg-gray-100 p-10 flex flex-col gap-5">
-      <!-- <div class="flex flex-col gap-2">
-        <label>Forma</label>
-        <select class="w-full p-2 rounded-md border" value="straight-dda" id="form-type">
-          <option value="elipse">Circunferência - Elipse</option>
-          <option value="midpoint">Circunfêrencia - Ponto médio</option>
-          <option value="explicit-equation">Circunfêrencia - Equação Explicita</option>
-          <option value="trigonometric">Circunfêrencia - Trigonometrico</option>
-          <option value="straight-dda">Reta - DDA</option>
-          <option value="straight-midpoint">Reta - Ponto médio</option>
+
+      <div class="flex flex-col gap-2 ">
+        <label>Dimensão da trasformação</label>
+
+        <select class="w-full p-2 rounded-md border" id="transformation-type">
+          <option value="2d">2D</option>
+          <option value="3d">3D</option>
         </select>
-      </div> -->
+      </div>
 
-      <div id="alterable" class="flex flex-col gap-2">
-        <div class="flex flex-row gap-2 triangle">
-          <input class="w-1/2 p-2 rounded-md border" type="number" id="x-1" placeholder="X1" />
-        
-          <input class="w-1/2 p-2 rounded-md border" type="number" id="y-1" placeholder="Y1" />
-        </div>
+      <div>
+        <div class="mb-2">Cordernadas de pontos:</div>
+        <div id="alterable" class="flex flex-col gap-2">
+          <div class="flex flex-row gap-2 triangle">
+            <input class="w-1/2 p-2 rounded-md border" type="number" id="x1" placeholder="X1" />
+          
+            <input class="w-1/2 p-2 rounded-md border" type="number" id="y1" placeholder="Y1" />
+          </div>
+  
+          <div class="flex flex-row gap-2 triangle">
+            <input class="w-1/2 p-2 rounded-md border" type="number" id="x2" placeholder="X2" />
+          
+            <input class="w-1/2 p-2 rounded-md border" type="number" id="y2" placeholder="Y2" />
+          </div>
+  
+          <div class="flex flex-row gap-2 triangle">
+            <input class="w-1/2 p-2 rounded-md border" type="number" id="x3" placeholder="X3" />
+          
+            <input class="w-1/2 p-2 rounded-md border" type="number" id="y3" placeholder="Y3" />
+          </div>
 
-        <div class="flex flex-row gap-2 triangle">
-          <input class="w-1/2 p-2 rounded-md border" type="number" id="x-2" placeholder="X2" />
-        
-          <input class="w-1/2 p-2 rounded-md border" type="number" id="y-2" placeholder="Y2" />
-        </div>
-
-        <div class="flex flex-row gap-2 triangle">
-          <input class="w-1/2 p-2 rounded-md border" type="number" id="x-3" placeholder="X3" />
-        
-          <input class="w-1/2 p-2 rounded-md border" type="number" id="y-3" placeholder="Y3" />
+          <div class="flex flex-row gap-2 triangle">
+            <input class="w-1/2 p-2 rounded-md border" type="number" id="x4" placeholder="X4" />
+          
+            <input class="w-1/2 p-2 rounded-md border" type="number" id="y4" placeholder="Y4" />
+          </div>
         </div>
       </div>
 
       <div class="flex flex-col gap-2 ">
         <label>Tipo da transformação</label>
+
         <select class="w-full p-2 rounded-md border" id="transformation-type">
           <option value="none">Nenhuma</option>
           <option value="translation">Translação</option>
@@ -53,7 +61,6 @@
           <option value="scale">Escala</option>
           <option value="reflection">Reflexão</option>
           <option value="shear">Cisalhamento</option>
-          
         </select>
       </div>
 
@@ -104,7 +111,7 @@
 
       <div class="grid grid-cols-2 gap-4">
         <button class="border p-2 px-6 rounded-md bg-gray-400 text-white" id="handle-clear">Limpar</button>
-        <button class="border p-2 px-6 rounded-md bg-green-600 text-white" id="handle-plot">Plotar</button>
+        <button class="border p-2 px-6 rounded-md bg-green-600 text-white" id="handle-draw">Plotar</button>
       </div>
 
     </div>
@@ -118,7 +125,9 @@
     </div>
   </main>
 
-  <script src="script.js"></script>
+  <script src="../question_01/script.js"></script>
+  <script src="../question_01/straight/dda.js"></script>
+  <script src="../question_03/2d/triangle.js"></script>
 </body>
 
 </html>

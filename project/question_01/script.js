@@ -1,8 +1,8 @@
 // events
-document.getElementById("handle-clear").addEventListener("click", clear);
-document.getElementById("handle-plot").addEventListener("click", plot);
-document.getElementById("form-type").addEventListener("change", handleChangeSelect);
-document.getElementById("transformation-type").addEventListener("change", () => handleChangeSelect(true));
+document.getElementById("handle-clear")?.addEventListener("click", clear);
+document.getElementById("handle-plot")?.addEventListener("click", plot);
+document.getElementById("form-type")?.addEventListener("change", handleChangeSelect);
+document.getElementById("transformation-type")?.addEventListener("change", () => handleChangeSelect(true));
 
 // global variables
 const canvas = document.getElementById("canvas");
@@ -10,7 +10,7 @@ const ctx = canvas.getContext("2d");
 const canvasWidth = canvas.width;
 const canvasHeight = canvas.height;
 const systemData = {
-  transformationType: null,
+  transformationType: null, // translation | rotation | scale | shear
   sx: 0, sy: 0,
   tx: 0, ty: 0,
   radius: 0,
@@ -27,7 +27,6 @@ function getUpdatedCenteredValues() {
 function clear() {
   ctx.clearRect(0, 0, canvasWidth, canvasHeight);
 
-  
   document.getElementById("semi-axle-max").value = 0;
   document.getElementById("semi-axle-min").value = 0;
   
@@ -35,7 +34,6 @@ function clear() {
   document.getElementById("center-y").value = 0;
   
   systemData.radius = 0;
-
 }
 
 

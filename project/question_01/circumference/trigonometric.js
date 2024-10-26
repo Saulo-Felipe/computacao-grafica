@@ -10,6 +10,6 @@ function trigonometric() {
     const [px, py] = [centerXValue + x, centerYValue - y];
     
     console.log({x, y})
-    draw_pixel(Math.round(px), Math.round(py));
+    drawPixel(Math.round(px), Math.round(py));
   }
 }
