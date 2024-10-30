@@ -46,18 +46,18 @@ function rectangle() {
     let [x4New, y4New] = rotatePoint(x4, y4, centerX, centerY, theta);
 
     draw_rectangle(x1New, x2New, x3New, x4New, y1New, y2New, y3New, y4New);
-}
-else if (systemData.transformationType === "rotation-anti") {
-  let theta = Number(document.getElementById("transformation-radius").value) * (Math.PI / 180);
+  }
+  else if (systemData.transformationType === "rotation-anti") {
+    let theta = Number(document.getElementById("transformation-radius").value) * (Math.PI / 180);
 
-  // Rotaciona cada ponto do retângulo
-  let [x1New, y1New] = [x1, y1]; 
-  let [x2New, y2New] = rotatePoint(x2, y2, centerX, centerY, theta);
-  let [x3New, y3New] = rotatePoint(x3, y3, centerX, centerY, theta);
-  let [x4New, y4New] = rotatePoint(x4, y4, centerX, centerY, theta);
+    // Rotaciona cada ponto do retângulo
+    let [x1New, y1New] = [x1, y1]; 
+    let [x2New, y2New] = rotatePoint(x2, y2, centerX, centerY, theta);
+    let [x3New, y3New] = rotatePoint(x3, y3, centerX, centerY, theta);
+    let [x4New, y4New] = rotatePoint(x4, y4, centerX, centerY, theta);
 
-  draw_rectangle(x1New, x2New, x3New, x4New, y1New, y2New, y3New, y4New);
-}
+    draw_rectangle(x1New, x2New, x3New, x4New, y1New, y2New, y3New, y4New);
+  }
 
   else if (systemData.transformationType === "scale") {
 
@@ -77,18 +77,10 @@ else if (systemData.transformationType === "rotation-anti") {
     let sh = Number(document.getElementById("sh").value);
     let sv = Number(document.getElementById("sv").value);
 
-    let newX1 = x1 + sh * y1;
-    let newY1 = y1 + sv * x1;
-
-    let newX2 = x2 + sh * y2;
-    let newY2 = y2 + sv * x2;
-
-    let newX3 = x3 + sh * y3;
-    let newY3 = y3 + sv * x3;
-
-    let newX4 = x4 + sh * y4;
-    let newY4 = y4 + sv * x4;
-
+    let newX1 = x1 + sh * y1; let newY1 = y1 + sv * x1;
+    let newX2 = x2 + sh * y2; let newY2 = y2 + sv * x2;
+    let newX3 = x3 + sh * y3; let newY3 = y3 + sv * x3;
+    let newX4 = x4 + sh * y4; let newY4 = y4 + sv * x4;
 
     x1 = newX1; y1 = newY1;
     x2 = newX2; y2 = newY2;
@@ -97,7 +89,23 @@ else if (systemData.transformationType === "rotation-anti") {
 
     draw_rectangle(x1, x2, x3, x4, y1, y2, y3, y4);
   }
+
+  else if (systemData.transformationType === "reflection") {
+
+    const selectedRadio = document.querySelector('input[name="eixo"]:checked');
+    const selectedValue = selectedRadio.id;
+
+    if(selectedValue == "eixo-x") {
+      draw_rectangle(x1, x2, x3, x4, -y1, -y2, -y3, -y4);
+    }
+    if(selectedValue == "eixo-y") {
+      draw_rectangle(-x1, -x2, -x3, -x4, y1, y2, y3, y4);
+    }
+    if(selectedValue == "origin") {
+      draw_rectangle(-x1, -x2, -x3, -x4, -y1, -y2, -y3, -y4);
+    }
   }
+}
 
 function draw_rectangle(x1, x2, x3, x4, y1, y2, y3, y4) {
   console.log("(" +x1+ ", " +y1+ ") (" +x2+ ", " +y2+ ") (" +x3+ ", " +y3+ ") (" +x4+ ", " +y4+ ")");

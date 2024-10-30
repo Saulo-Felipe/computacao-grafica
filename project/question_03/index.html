@@ -99,12 +99,34 @@
 
         <div class="flex gap-2 gap-2 shear hidden">
           <div class="flex flex-col w-[calc(50%_-_0.25rem)] ">
-            <label>shX:</label>
+            <label>sh:</label>
             <input class="p-2 rounded-md border w-[-webkit-fill-available]" type="number" id="sh" />
           </div>
         
           <div class="flex flex-col w-[calc(50%_-_0.25rem)]">
-            <label>shY:</label>
+            <label>sv:</label>
+            <input class="p-2 rounded-md border w-[-webkit-fill-available]" type="number" id="sv" />
+          </div>
+        </div>
+
+        <div class="grid gap-2 gap-2 reflection hidden">
+          <div class="flex flex-row w-[calc(50%_-_0.25rem)] ">
+            <input class="p-2 rounded-md border w-[-webkit-fill-available]" type="radio" id="eixo-x" name="eixo" />
+            <label>Em Relação ao Eixo X</label>
+          </div>
+
+          <div class="flex flex-row w-[calc(50%_-_0.25rem)] ">
+            <input class="p-2 rounded-md border w-[-webkit-fill-available]" type="radio" id="eixo-y" name="eixo" />
+            <label>Em Relação ao Eixo Y</label>
+          </div>
+
+          <div class="flex flex-row w-[calc(50%_-_0.25rem)] ">
+            <input class="p-2 rounded-md border w-[-webkit-fill-available]" type="radio" id="origin" name="eixo" />
+            <label>Em Relação à Origem</label>
+          </div>
+        
+          <div class="flex flex-col w-[calc(50%_-_0.25rem)]">
+            <label>Em relação à reta: </label>
             <input class="p-2 rounded-md border w-[-webkit-fill-available]" type="number" id="sv" />
           </div>
         </div>
