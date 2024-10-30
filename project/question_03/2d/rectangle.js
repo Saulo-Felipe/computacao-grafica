@@ -71,19 +71,51 @@ else if (systemData.transformationType === "rotation-anti") {
 
     draw_rectangle(x1, x2, x3, x4, y1, y2, y3, y4);
   }
+
+  else if (systemData.transformationType === "shear") {
+
+    let sh = Number(document.getElementById("sh").value);
+    let sv = Number(document.getElementById("sv").value);
+
+    let newX1 = x1 + sh * y1;
+    let newY1 = y1 + sv * x1;
+
+    let newX2 = x2 + sh * y2;
+    let newY2 = y2 + sv * x2;
+
+    let newX3 = x3 + sh * y3;
+    let newY3 = y3 + sv * x3;
+
+    let newX4 = x4 + sh * y4;
+    let newY4 = y4 + sv * x4;
+
+
+    x1 = newX1; y1 = newY1;
+    x2 = newX2; y2 = newY2;
+    x3 = newX3; y3 = newY3;
+    x4 = newX4; y4 = newY4;
+
+    draw_rectangle(x1, x2, x3, x4, y1, y2, y3, y4);
+  }
   }
 
 function draw_rectangle(x1, x2, x3, x4, y1, y2, y3, y4) {
+  console.log("(" +x1+ ", " +y1+ ") (" +x2+ ", " +y2+ ") (" +x3+ ", " +y3+ ") (" +x4+ ", " +y4+ ")");
 
-  if (isValidRectangle(x1, y1, x2, y2, x3, y3, x4, y4)) {
     straightDDA(x1, y1, x2, y2); // Lado esquerdo
-    straightDDA(x2, y2, x3, y3); // Lado inferior
+    straightDDA(x2, y2, x3, y3); // Lado superior
     straightDDA(x3, y3, x4, y4); // Lado direito
-    straightDDA(x4, y4, x1, y1); // Lado superior
+    straightDDA(x4, y4, x1, y1); // Lado inferior
 
-  } else {
-    alert("Suas coordenadas não formam um retângulo válido!");
-  }
+  // if (isValidRectangle(x1, y1, x2, y2, x3, y3, x4, y4)) {
+  //   straightDDA(x1, y1, x2, y2); // Lado esquerdo
+  //   straightDDA(x2, y2, x3, y3); // Lado inferior
+  //   straightDDA(x3, y3, x4, y4); // Lado direito
+  //   straightDDA(x4, y4, x1, y1); // Lado superior
+
+  // } else {
+  //   alert("Suas coordenadas não formam um retângulo válido!");
+  // }
 }
 
 

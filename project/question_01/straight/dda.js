@@ -5,7 +5,6 @@ function straightDDA(defaultX1, defaultY1, defaultX2, defaultY2) {
   let x2 = Number(document.getElementById("x-2")?.value);
   let y2 = Number(document.getElementById("y-2")?.value);
   
-
   if (defaultX1) {
     x1 = Number(defaultX1)
     x2 = Number(defaultX2)
@@ -33,6 +32,4 @@ function straightDDA(defaultX1, defaultY1, defaultX2, defaultY2) {
     y += Yinc;
     drawPixel(Math.round(x), Math.round(y), true);
   }
-  // console.log(`Desenhando linha de (${x1}, ${y1}) a (${x2}, ${y2})`);
-
 }

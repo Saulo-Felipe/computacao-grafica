@@ -71,64 +71,6 @@
         </div>
       </div>
 
-      <div class="flex flex-col gap-2 hidden">
-        <label>Tipo da transformação</label>
-        <select class="w-full p-2 rounded-md border" id="transformation-type">
-          <option value="none">Nenhuma</option>
-          <option value="translation">Translação</option>
-          <option value="rotation">Rotação</option>
-          <option value="scale">Escala</option>
-          <option value="reflection">Reflexão</option>
-          <option value="shear">Cisalhamento</option>
-          
-        </select>
-      </div>
-
-      <div id="alterable2" class="flex flex-col gap-2">
-        <div class="flex flex-col gap-2 rotation hidden">
-          <label>Graus:</label>
-          <input class="w-full p-2 rounded-md border" type="number" id="transformation-radius" />
-        </div>
-
-        <div class="flex gap-2 gap-2 scale hidden">
-          <div class="flex flex-col w-[calc(50%_-_0.25rem)]">
-            <label>SX:</label>
-            <input class="p-2 rounded-md border w-[-webkit-fill-available]" type="number" id="sx" />
-          </div>
-
-          <div class="flex flex-col w-[calc(50%_-_0.25rem)]">
-            <label>SY:</label>
-            <input class=" p-2 rounded-md border w-[-webkit-fill-available]" type="number" id="sy" />
-          </div>
-        </div>
-
-        <div class="flex gap-2 gap-2 translation hidden">
-          <div class="flex flex-col w-[calc(50%_-_0.25rem)]">
-            <label>TX:</label>
-            <input class="p-2 rounded-md border w-[-webkit-fill-available]" type="number" id="tx" />
-          </div>
-
-          <div class="flex flex-col w-[calc(50%_-_0.25rem)]">
-            <label>TY:</label>
-            <input class="p-2 rounded-md border w-[-webkit-fill-available]" type="number" id="ty" />
-          </div>
-        </div>
-
-        <div></div>
-
-        <div class="flex gap-2 gap-2 shear hidden">
-          <div class="flex flex-col w-[calc(50%_-_0.25rem)]">
-            <label>Cisalhamento em X:</label>
-            <input class="p-2 rounded-md border w-[-webkit-fill-available]" type="number" id="shx" />
-          </div>
-
-          <div class="flex flex-col w-[calc(50%_-_0.25rem)]">
-            <label>Cisalhamento em Y:</label>
-            <input class="p-2 rounded-md border w-[-webkit-fill-available]" type="number" id="shy" />
-          </div>
-        </div>
-      </div>
-
       <div class="grid grid-cols-2 gap-4">
         <button class="border p-2 px-6 rounded-md bg-gray-400 text-white" id="handle-clear">Limpar</button>
         <button class="border p-2 px-6 rounded-md bg-green-600 text-white" id="handle-plot">Plotar</button>
