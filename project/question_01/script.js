@@ -70,13 +70,13 @@ function handleChangeSelect(isTransformation=false) {
 }
 
 function drawPixel(x, y, adjusteToCenter=false) {
-  ctx.fillStyle = "#000";
-
+  ctx.fillStyle = "#008000";
+  //console.log("X: ", x , " Y: ", y)
   if (adjusteToCenter) {
     const canvasX = Math.round(canvasWidth / 2 + x);
     const canvasY = Math.round(canvasHeight / 2 - y);
     return ctx.fillRect(canvasX, canvasY, 1, 1);
   }
-
+  
   ctx.fillRect(x, canvasHeight - y - 1, 1, 1);
 }

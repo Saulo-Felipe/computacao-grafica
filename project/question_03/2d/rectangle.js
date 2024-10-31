@@ -11,14 +11,13 @@ function rectangle() {
   let y2 = Number(document.getElementById("y2").value);
   let y3 = Number(document.getElementById("y3").value);
   let y4 = Number(document.getElementById("y4").value);
-
-  x1 = 10, y1 = 10;
-  x2 = 10, y2 = 100;
+  x1 = 0, y1 = 0;
+  x2 = 0, y2 = 100;
   x3 = 100, y3 = 100;
-  x4 = 100, y4 = 10;
-  console.log("(" +x1+ ", " +y1+ ") (" +x2+ ", " +y2+ ") (" +x3+ ", " +y3+ ") (" +x4+ ", " +y4+ ")");
+  x4 = 100, y4 = 0;
+  // console.log("(" +x1+ ", " +y1+ ") (" +x2+ ", " +y2+ ") (" +x3+ ", " +y3+ ") (" +x4+ ", " +y4+ ")");
 
-  draw_rectangle(x1, x2, x3, x4, y1, y2, y3, y4);
+   draw_rectangle(x1, x2, x3, x4, y1, y2, y3, y4);
 
   let centerX = x1; 
   let centerY = y1; 
@@ -94,6 +93,7 @@ function rectangle() {
 
     const selectedRadio = document.querySelector('input[name="eixo"]:checked');
     const selectedValue = selectedRadio.id;
+    console.log(selectedValue);
 
     if(selectedValue == "eixo-x") {
       draw_rectangle(x1, x2, x3, x4, -y1, -y2, -y3, -y4);
@@ -104,12 +104,27 @@ function rectangle() {
     if(selectedValue == "origin") {
       draw_rectangle(-x1, -x2, -x3, -x4, -y1, -y2, -y3, -y4);
     }
+    if(selectedValue == "straight") {
+
+    let m = Number(document.getElementById("m").value);
+    let b = Number(document.getElementById("b").value);
+
+    straightDDA(-300, m * -300 + b, 300, m * 300 + b);
+
+    let [x1New, y1New] = reflectPoint(x1, y1, m, b); 
+    let [x2New, y2New] = reflectPoint(x2, y2, m, b);
+    let [x3New, y3New] = reflectPoint(x3, y3, m, b);
+    let [x4New, y4New] = reflectPoint(x4, y4, m, b);
+
+    draw_rectangle(x1New, x2New, x3New, x4New, y1New, y2New, y3New, y4New);
+
+    }
   }
 }
 
 function draw_rectangle(x1, x2, x3, x4, y1, y2, y3, y4) {
   console.log("(" +x1+ ", " +y1+ ") (" +x2+ ", " +y2+ ") (" +x3+ ", " +y3+ ") (" +x4+ ", " +y4+ ")");
-
+    
     straightDDA(x1, y1, x2, y2); // Lado esquerdo
     straightDDA(x2, y2, x3, y3); // Lado superior
     straightDDA(x3, y3, x4, y4); // Lado direito
@@ -155,6 +170,16 @@ function rotatePoint(x, y, centerX, centerY, theta) {
   let xNew = centerX + (x - centerX) * Math.cos(theta) - (y - centerY) * Math.sin(theta);
   let yNew = centerY + (x - centerX) * Math.sin(theta) + (y - centerY) * Math.cos(theta);
   return [xNew, yNew];
+}
+
+function reflectPoint(x, y, m, b) {
+    const xPrime = (x + m * (y - b)) / (1 + m * m);
+    const yPrime = m * xPrime + b;
+
+    const xReflect = 2 * xPrime - x;
+    const yReflect = 2 * yPrime - y;
+
+    return [xReflect, yReflect];
 }
 
 

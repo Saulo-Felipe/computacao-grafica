@@ -97,7 +97,7 @@
 
         <div></div>
 
-        <div class="flex gap-2 gap-2 shear hidden">
+        <div class="col gap-2 gap-2 shear hidden">
           <div class="flex flex-col w-[calc(50%_-_0.25rem)] ">
             <label>sh:</label>
             <input class="p-2 rounded-md border w-[-webkit-fill-available]" type="number" id="sh" />
@@ -109,25 +109,39 @@
           </div>
         </div>
 
-        <div class="grid gap-2 gap-2 reflection hidden">
-          <div class="flex flex-row w-[calc(50%_-_0.25rem)] ">
+        <div class="flex gap-2 gap-2 reflection hidden">
+          <div class="flex flex-col w-[calc(50%_-_0.25rem)] ">
             <input class="p-2 rounded-md border w-[-webkit-fill-available]" type="radio" id="eixo-x" name="eixo" />
-            <label>Em Relação ao Eixo X</label>
+            <label>Eixo X</label>
           </div>
 
-          <div class="flex flex-row w-[calc(50%_-_0.25rem)] ">
+          <div class="flex flex-col w-[calc(50%_-_0.25rem)] ">
             <input class="p-2 rounded-md border w-[-webkit-fill-available]" type="radio" id="eixo-y" name="eixo" />
-            <label>Em Relação ao Eixo Y</label>
+            <label>Eixo Y</label>
+          </div>
+        </div>
+
+        <div class="flex gap-2 gap-2 reflection hidden">
+          <div class="flex flex-col w-[calc(50%_-_0.25rem)] ">
+            <input class="p-2 rounded-md border w-[-webkit-fill-available]" type="radio" id="origin" name="eixo" />
+            <label>Origem</label>
           </div>
 
-          <div class="flex flex-row w-[calc(50%_-_0.25rem)] ">
-            <input class="p-2 rounded-md border w-[-webkit-fill-available]" type="radio" id="origin" name="eixo" />
-            <label>Em Relação à Origem</label>
+          <div class="flex flex-col w-[calc(50%_-_0.25rem)] ">
+            <input class="p-2 rounded-md border w-[-webkit-fill-available]" type="radio" id="straight" name="eixo" />
+            <label>Reta</label>
           </div>
-        
+        </div>
+
+        <div class="col gap-2 gap-2 reflection hidden">
           <div class="flex flex-col w-[calc(50%_-_0.25rem)]">
-            <label>Em relação à reta: </label>
-            <input class="p-2 rounded-md border w-[-webkit-fill-available]" type="number" id="sv" />
+            <label>m: </label>
+            <input class="p-2 rounded-md border w-full" type="number" id="m" />
+          </div>
+
+          <div class="flex flex-col w-[calc(50%_-_0.25rem)]">
+            <label>b: </label>
+            <input class="p-2 rounded-md border w-full" type="number" id="b" />
           </div>
         </div>
       </div>
@@ -150,6 +164,7 @@
 
   <script src="../question_01/script.js"></script>
   <script src="../question_01/straight/dda.js"></script>
+  <script src="../question_01/straight/midpoint.js"></script>
   <script src="../question_03/2d/rectangle.js"></script>
 </body>
 

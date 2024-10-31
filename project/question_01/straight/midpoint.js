@@ -1,8 +1,16 @@
-function straightMidpoint() {
-  const x1 = Number(document.getElementById("x-1").value);
-  const y1 = Number(document.getElementById("y-1").value);
-  const x2 = Number(document.getElementById("x-2").value);
-  const y2 = Number(document.getElementById("y-2").value);
+function straightMidpoint(defaultX1, defaultY1, defaultX2, defaultY2) {
+  
+  let x1 = Number(document.getElementById("x-1")?.value);
+  let y1 = Number(document.getElementById("y-1")?.value);
+  let x2 = Number(document.getElementById("x-2")?.value);
+  let y2 = Number(document.getElementById("y-2")?.value);
+  
+  if (defaultX1) {
+    x1 = Number(defaultX1)
+    x2 = Number(defaultX2)
+    y1 = Number(defaultY1)
+    y2 = Number(defaultY2)
+  }
 
   let dx = Math.abs(x2 - x1);
   let dy = Math.abs(y2 - y1);
