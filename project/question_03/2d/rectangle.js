@@ -1,5 +1,7 @@
 document.getElementById("handle-draw").addEventListener("click", rectangle);
 
+let isDrawn = false
+
 function rectangle() {
   ctx.clearRect(0, 0, canvasWidth, canvasHeight);
 
@@ -11,13 +13,16 @@ function rectangle() {
   let y2 = Number(document.getElementById("y2").value);
   let y3 = Number(document.getElementById("y3").value);
   let y4 = Number(document.getElementById("y4").value);
-  x1 = 0, y1 = 0;
-  x2 = 0, y2 = 100;
-  x3 = 100, y3 = 100;
-  x4 = 100, y4 = 0;
+  // x1 = 0, y1 = 0;
+  // x2 = 0, y2 = 100;
+  // x3 = 100, y3 = 100;
+  // x4 = 100, y4 = 0;
   // console.log("(" +x1+ ", " +y1+ ") (" +x2+ ", " +y2+ ") (" +x3+ ", " +y3+ ") (" +x4+ ", " +y4+ ")");
 
-   draw_rectangle(x1, x2, x3, x4, y1, y2, y3, y4);
+  if (!isDrawn) {
+    draw_rectangle(x1, x2, x3, x4, y1, y2, y3, y4);
+    isDrawn = true
+  }
 
   let centerX = x1; 
   let centerY = y1; 
