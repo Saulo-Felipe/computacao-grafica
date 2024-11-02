@@ -32,7 +32,7 @@ function rectangle() {
     x3 += tx; y3 += ty;
     x4 += tx; y4 += ty;
 
-    draw_rectangle(x1, x2, x3, x4, y1, y2, y3, y4);
+    draw_rectangle_transformed(x1, x2, x3, x4, y1, y2, y3, y4);
   }
 
   else if (systemData.transformationType === "rotation") {
@@ -44,7 +44,7 @@ function rectangle() {
     let [x3New, y3New] = rotatePoint(x3, y3, centerX, centerY, theta);
     let [x4New, y4New] = rotatePoint(x4, y4, centerX, centerY, theta);
 
-    draw_rectangle(x1New, x2New, x3New, x4New, y1New, y2New, y3New, y4New);
+    draw_rectangle_transformed(x1New, x2New, x3New, x4New, y1New, y2New, y3New, y4New);
   }
   else if (systemData.transformationType === "rotation-anti") {
     let theta = Number(document.getElementById("transformation-radius").value) * (Math.PI / 180);
@@ -55,7 +55,7 @@ function rectangle() {
     let [x3New, y3New] = rotatePoint(x3, y3, centerX, centerY, theta);
     let [x4New, y4New] = rotatePoint(x4, y4, centerX, centerY, theta);
 
-    draw_rectangle(x1New, x2New, x3New, x4New, y1New, y2New, y3New, y4New);
+    draw_rectangle_transformed(x1New, x2New, x3New, x4New, y1New, y2New, y3New, y4New);
   }
 
   else if (systemData.transformationType === "scale") {
@@ -63,12 +63,13 @@ function rectangle() {
     let sx = Number(document.getElementById("sx").value);
     let sy = Number(document.getElementById("sy").value);
 
-    x1 *= sx; y1 *= sy;
-    x2 *= sx; y2 *= sy;
-    x3 *= sx; y3 *= sy;
-    x4 *= sx; y4 *= sy;
-
-    draw_rectangle(x1, x2, x3, x4, y1, y2, y3, y4);
+    if(sx != 0) {
+      x1 *= sx; x2 *= sx; x3 *= sx; x4 *= sx; 
+    }
+    if(sy != 0) {
+      y1 *= sy; y2 *= sy; y3 *= sy; y4 *= sy;
+    }
+    draw_rectangle_transformed(x1, x2, x3, x4, y1, y2, y3, y4);
   }
 
   else if (systemData.transformationType === "shear") {
@@ -86,7 +87,7 @@ function rectangle() {
     x3 = newX3; y3 = newY3;
     x4 = newX4; y4 = newY4;
 
-    draw_rectangle(x1, x2, x3, x4, y1, y2, y3, y4);
+    draw_rectangle_transformed(x1, x2, x3, x4, y1, y2, y3, y4);
   }
 
   else if (systemData.transformationType === "reflection") {
@@ -96,13 +97,13 @@ function rectangle() {
     console.log(selectedValue);
 
     if(selectedValue == "eixo-x") {
-      draw_rectangle(x1, x2, x3, x4, -y1, -y2, -y3, -y4);
+      draw_rectangle_transformed(x1, x2, x3, x4, -y1, -y2, -y3, -y4);
     }
     if(selectedValue == "eixo-y") {
-      draw_rectangle(-x1, -x2, -x3, -x4, y1, y2, y3, y4);
+      draw_rectangle_transformed(-x1, -x2, -x3, -x4, y1, y2, y3, y4);
     }
     if(selectedValue == "origin") {
-      draw_rectangle(-x1, -x2, -x3, -x4, -y1, -y2, -y3, -y4);
+      draw_rectangle_transformed(-x1, -x2, -x3, -x4, -y1, -y2, -y3, -y4);
     }
     if(selectedValue == "straight") {
 
@@ -116,7 +117,7 @@ function rectangle() {
     let [x3New, y3New] = reflectPoint(x3, y3, m, b);
     let [x4New, y4New] = reflectPoint(x4, y4, m, b);
 
-    draw_rectangle(x1New, x2New, x3New, x4New, y1New, y2New, y3New, y4New);
+    draw_rectangle_transformed(x1New, x2New, x3New, x4New, y1New, y2New, y3New, y4New);
 
     }
   }
@@ -124,21 +125,26 @@ function rectangle() {
 
 function draw_rectangle(x1, x2, x3, x4, y1, y2, y3, y4) {
   console.log("(" +x1+ ", " +y1+ ") (" +x2+ ", " +y2+ ") (" +x3+ ", " +y3+ ") (" +x4+ ", " +y4+ ")");
-    
+  
+  if (isValidRectangle(x1, y1, x2, y2, x3, y3, x4, y4)) {
     straightDDA(x1, y1, x2, y2); // Lado esquerdo
-    straightDDA(x2, y2, x3, y3); // Lado superior
+    straightDDA(x2, y2, x3, y3); // Lado inferior
     straightDDA(x3, y3, x4, y4); // Lado direito
-    straightDDA(x4, y4, x1, y1); // Lado inferior
+    straightDDA(x4, y4, x1, y1); // Lado superior
 
-  // if (isValidRectangle(x1, y1, x2, y2, x3, y3, x4, y4)) {
-  //   straightDDA(x1, y1, x2, y2); // Lado esquerdo
-  //   straightDDA(x2, y2, x3, y3); // Lado inferior
-  //   straightDDA(x3, y3, x4, y4); // Lado direito
-  //   straightDDA(x4, y4, x1, y1); // Lado superior
+  } else {
+    alert("Suas coordenadas não formam um retângulo válido!");
+  }
+}
 
-  // } else {
-  //   alert("Suas coordenadas não formam um retângulo válido!");
-  // }
+function draw_rectangle_transformed(x1, x2, x3, x4, y1, y2, y3, y4) {
+  console.log("(" +x1+ ", " +y1+ ") (" +x2+ ", " +y2+ ") (" +x3+ ", " +y3+ ") (" +x4+ ", " +y4+ ")");
+
+    straightDDA(x1, y1, x2, y2); // Lado esquerdo
+    straightDDA(x2, y2, x3, y3); // Lado inferior
+    straightDDA(x3, y3, x4, y4); // Lado direito
+    straightDDA(x4, y4, x1, y1); // Lado superior
+
 }
 
 

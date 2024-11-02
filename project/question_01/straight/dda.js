@@ -12,11 +12,8 @@ function straightDDA(defaultX1, defaultY1, defaultX2, defaultY2) {
     y2 = Number(defaultY2)
   }
 
-  console.log(x1, y1);
-
   let length = Math.abs(x2 - x1);
   
-
   if (Math.abs(y2 - y1) > length) {
     length = Math.abs(y2 - y1);
   }
