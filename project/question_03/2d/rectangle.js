@@ -1,10 +1,19 @@
 document.getElementById("handle-draw").addEventListener("click", rectangle);
 
-let isDrawn = false
+let savedValues = {
+  x1: null, 
+  x2: null, 
+  x3: null, 
+  x4: null, 
+  y1: null, 
+  y2: null, 
+  y3: null, 
+  y4: null, 
+}
 
 function rectangle() {
   ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-
+  
   let x1 = Number(document.getElementById("x1").value);
   let x2 = Number(document.getElementById("x2").value);
   let x3 = Number(document.getElementById("x3").value);
@@ -13,16 +22,17 @@ function rectangle() {
   let y2 = Number(document.getElementById("y2").value);
   let y3 = Number(document.getElementById("y3").value);
   let y4 = Number(document.getElementById("y4").value);
-  // x1 = 0, y1 = 0;
-  // x2 = 0, y2 = 100;
-  // x3 = 100, y3 = 100;
-  // x4 = 100, y4 = 0;
+  x1 = 0, y1 = 0;
+  x2 = 0, y2 = 100;
+  x3 = 100, y3 = 100;
+  x4 = 100, y4 = 0;
   // console.log("(" +x1+ ", " +y1+ ") (" +x2+ ", " +y2+ ") (" +x3+ ", " +y3+ ") (" +x4+ ", " +y4+ ")");
 
-  if (!isDrawn) {
-    draw_rectangle(x1, x2, x3, x4, y1, y2, y3, y4);
-    isDrawn = true
+  if (!savedValues.x1) {
+    savedValues = {x1, x2, x3, x4, y1, y2, y3, y4}
   }
+  
+  draw_rectangle(x1, x2, x3, x4, y1, y2, y3, y4);
 
   let centerX = x1; 
   let centerY = y1; 
@@ -32,22 +42,22 @@ function rectangle() {
     let tx = Number(document.getElementById("tx").value);
     let ty = Number(document.getElementById("ty").value);
 
-    x1 += tx; y1 += ty;
-    x2 += tx; y2 += ty;
-    x3 += tx; y3 += ty;
-    x4 += tx; y4 += ty;
+    savedValues.x1 += tx; savedValues.y1 += ty;
+    savedValues.x2 += tx; savedValues.y2 += ty;
+    savedValues.x3 += tx; savedValues.y3 += ty;
+    savedValues.x4 += tx; savedValues.y4 += ty;
 
-    draw_rectangle_transformed(x1, x2, x3, x4, y1, y2, y3, y4);
+    draw_rectangle_transformed(savedValues.x1, savedValues.x2, savedValues.x3, savedValues.x4, savedValues.y1, savedValues.y2, savedValues.y3, savedValues.y4);
   }
 
   else if (systemData.transformationType === "rotation") {
     let theta = -Number(document.getElementById("transformation-radius").value) * (Math.PI / 180);
 
     // Rotaciona cada ponto do retângulo
-    let [x1New, y1New] = [x1, y1]; 
-    let [x2New, y2New] = rotatePoint(x2, y2, centerX, centerY, theta);
-    let [x3New, y3New] = rotatePoint(x3, y3, centerX, centerY, theta);
-    let [x4New, y4New] = rotatePoint(x4, y4, centerX, centerY, theta);
+    let [x1New, y1New] = [savedValues.x1, savedValues.y1]; 
+    let [x3New, y3New] = rotatePoint(savedValues.x3, savedValues.y3, centerX, centerY, theta);
+    let [x2New, y2New] = rotatePoint(savedValues.x2, savedValues.y2, centerX, centerY, theta);
+    let [x4New, y4New] = rotatePoint(savedValues.x4, savedValues.y4, centerX, centerY, theta);
 
     draw_rectangle_transformed(x1New, x2New, x3New, x4New, y1New, y2New, y3New, y4New);
   }
@@ -55,10 +65,10 @@ function rectangle() {
     let theta = Number(document.getElementById("transformation-radius").value) * (Math.PI / 180);
 
     // Rotaciona cada ponto do retângulo
-    let [x1New, y1New] = [x1, y1]; 
-    let [x2New, y2New] = rotatePoint(x2, y2, centerX, centerY, theta);
-    let [x3New, y3New] = rotatePoint(x3, y3, centerX, centerY, theta);
-    let [x4New, y4New] = rotatePoint(x4, y4, centerX, centerY, theta);
+    let [x1New, y1New] = [savedValues.x1, savedValues.y1]; 
+    let [x2New, y2New] = rotatePoint(savedValues.x2, savedValues.y2, centerX, centerY, theta);
+    let [x3New, y3New] = rotatePoint(savedValues.x3, savedValues.y3, centerX, centerY, theta);
+    let [x4New, y4New] = rotatePoint(savedValues.x4, savedValues.y4, centerX, centerY, theta);
 
     draw_rectangle_transformed(x1New, x2New, x3New, x4New, y1New, y2New, y3New, y4New);
   }
@@ -69,12 +79,12 @@ function rectangle() {
     let sy = Number(document.getElementById("sy").value);
 
     if(sx != 0) {
-      x1 *= sx; x2 *= sx; x3 *= sx; x4 *= sx; 
+      savedValues.x1 *= sx; savedValues.x2 *= sx; savedValues.x3 *= sx; savedValues.x4 *= sx; 
     }
     if(sy != 0) {
-      y1 *= sy; y2 *= sy; y3 *= sy; y4 *= sy;
+      savedValues.y1 *= sy; savedValues.y2 *= sy; savedValues.y3 *= sy; savedValues.y4 *= sy;
     }
-    draw_rectangle_transformed(x1, x2, x3, x4, y1, y2, y3, y4);
+    draw_rectangle_transformed(savedValues.x1, savedValues.x2, savedValues.x3, savedValues.x4, savedValues.y1, savedValues.y2, savedValues.y3, savedValues.y4);
   }
 
   else if (systemData.transformationType === "shear") {
@@ -82,33 +92,32 @@ function rectangle() {
     let sh = Number(document.getElementById("sh").value);
     let sv = Number(document.getElementById("sv").value);
 
-    let newX1 = x1 + sh * y1; let newY1 = y1 + sv * x1;
-    let newX2 = x2 + sh * y2; let newY2 = y2 + sv * x2;
-    let newX3 = x3 + sh * y3; let newY3 = y3 + sv * x3;
-    let newX4 = x4 + sh * y4; let newY4 = y4 + sv * x4;
+    let newX1 = savedValues.x1 + sh * savedValues.y1; let newY1 = savedValues.y1 + sv * savedValues.x1;
+    let newX2 = savedValues.x2 + sh * savedValues.y2; let newY2 = savedValues.y2 + sv * savedValues.x2;
+    let newX3 = savedValues.x3 + sh * savedValues.y3; let newY3 = savedValues.y3 + sv * savedValues.x3;
+    let newX4 = savedValues.x4 + sh * savedValues.y4; let newY4 = savedValues.y4 + sv * savedValues.x4;
 
-    x1 = newX1; y1 = newY1;
-    x2 = newX2; y2 = newY2;
-    x3 = newX3; y3 = newY3;
-    x4 = newX4; y4 = newY4;
+    savedValues.x1 = newX1; savedValues.y1 = newY1;
+    savedValues.x2 = newX2; savedValues.y2 = newY2;
+    savedValues.x3 = newX3; savedValues.y3 = newY3;
+    savedValues.x4 = newX4; savedValues.y4 = newY4;
 
-    draw_rectangle_transformed(x1, x2, x3, x4, y1, y2, y3, y4);
+    draw_rectangle_transformed(savedValues.x1, savedValues.x2, savedValues.x3, savedValues.x4, savedValues.y1, savedValues.y2, savedValues.y3, savedValues.y4);
   }
 
   else if (systemData.transformationType === "reflection") {
 
     const selectedRadio = document.querySelector('input[name="eixo"]:checked');
     const selectedValue = selectedRadio.id;
-    console.log(selectedValue);
 
     if(selectedValue == "eixo-x") {
-      draw_rectangle_transformed(x1, x2, x3, x4, -y1, -y2, -y3, -y4);
+      draw_rectangle_transformed(savedValues.x1, savedValues.x2, savedValues.x3, savedValues.x4, -savedValues.y1, -savedValues.y2, -savedValues.y3, -savedValues.y4);
     }
     if(selectedValue == "eixo-y") {
-      draw_rectangle_transformed(-x1, -x2, -x3, -x4, y1, y2, y3, y4);
+      draw_rectangle_transformed(-savedValues.x1, -savedValues.x2, -savedValues.x3, -savedValues.x4, savedValues.y1, savedValues.y2, savedValues.y3, savedValues.y4);
     }
     if(selectedValue == "origin") {
-      draw_rectangle_transformed(-x1, -x2, -x3, -x4, -y1, -y2, -y3, -y4);
+      draw_rectangle_transformed(-savedValues.x1, -savedValues.x2, -savedValues.x3, -savedValues.x4, -savedValues.y1, -savedValues.y2, -savedValues.y3, -savedValues.y4);
     }
     if(selectedValue == "straight") {
 
@@ -117,10 +126,10 @@ function rectangle() {
 
     straightDDA(-300, m * -300 + b, 300, m * 300 + b);
 
-    let [x1New, y1New] = reflectPoint(x1, y1, m, b); 
-    let [x2New, y2New] = reflectPoint(x2, y2, m, b);
-    let [x3New, y3New] = reflectPoint(x3, y3, m, b);
-    let [x4New, y4New] = reflectPoint(x4, y4, m, b);
+    let [x1New, y1New] = reflectPoint(savedValues.x1, savedValues.y1, m, b); 
+    let [x2New, y2New] = reflectPoint(savedValues.x2, savedValues.y2, m, b);
+    let [x3New, y3New] = reflectPoint(savedValues.x3, savedValues.y3, m, b);
+    let [x4New, y4New] = reflectPoint(savedValues.x4, savedValues.y4, m, b);
 
     draw_rectangle_transformed(x1New, x2New, x3New, x4New, y1New, y2New, y3New, y4New);
 
