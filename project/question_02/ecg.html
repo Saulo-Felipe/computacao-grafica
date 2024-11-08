@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electrocardiogram</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script> <!-- Incluindo Tailwind CSS -->
+     <script src="ecg.js" ></script> <!-- Incluindo o arquivo JavaScript -->
+</head>
+<body class="bg-gray-900 flex justify-center items-center h-screen">
+    
+    <div>
+    <div id="canvas-container" class="text-center">
+        <input class="w-1/4 p-2 rounded-md border" type="number" id="duration" placeholder="Período de exibição" />
+        <button class="border p-2 px-6 rounded-md bg-green-600 text-white" id="handle-draw">Iniciar</button>
+        <h5 class="text-white text-2xl mb-4">Simulador de batimentos do coração</h5>
+    </div>
+    
+</body>
+</html>
