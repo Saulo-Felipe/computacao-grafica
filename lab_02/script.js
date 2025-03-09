@@ -1,6 +1,8 @@
 // events
 document.getElementById("handle-plot").addEventListener("click", plot);
 document.getElementById("form-type").addEventListener("change", handleChangeSelect);
+document.getElementById("x-1").addEventListener("change", handleChangeX1AndX2)
+document.getElementById("y-1").addEventListener("change", handleChangeX1AndX2)
 document.getElementById("transformation-type").addEventListener("change", () => handleChangeSelect(true));
 
 // global variables
@@ -8,13 +10,27 @@ const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 const canvasWidth = canvas.width;
 const canvasHeight = canvas.height;
-const systemData = {
+let systemData = {
   transformationType: null,
   sx: 0, sy: 0,
   tx: 0, ty: 0,
   radius: 0,
-  shx: 0, shy: 0
+  shx: 0, shy: 0,
+  x1: 0, y1: 0
 }
+
+const hiddenMenu = new URLSearchParams(window.location.search).get("hidden-menu");
+const systemDataDefault = new URLSearchParams(window.location.search).get("systemData");
+
+if (systemDataDefault) {
+  systemData = JSON.parse(systemDataDefault)
+  plot()
+}
+
+if (hiddenMenu) {
+  document.querySelector("#menu").remove()
+}
+
 
 function getUpdatedCenteredValues() {
   return {
@@ -26,7 +42,9 @@ function getUpdatedCenteredValues() {
 function plot() {
   const formType = document.getElementById("form-type").value;
   ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-  
+
+  window.open(`http://localhost:5500/lab_02/?hidden-menu=true&systemData=${JSON.stringify(systemData)}`, "_blank", "width=1280,height=720")
+
   const data = {
     "pixel": pixel,
     "elipse": elipse, // elipse
@@ -38,7 +56,7 @@ function plot() {
   }[formType]();
 }
 
-function handleChangeSelect(isTransformation=false) {
+function handleChangeSelect(isTransformation = false) {
   const formType = document.getElementById(
     typeof isTransformation === "boolean" ? "transformation-type" : "form-type"
   ).value;
@@ -56,7 +74,14 @@ function handleChangeSelect(isTransformation=false) {
     .forEach(element => element.classList.remove("hidden"));
 }
 
-function drawPixel(x, y, adjusteToCenter=false) {
+function handleChangeX1AndX2() {
+  systemData.x1 = Number(document.querySelector("#x-1").value)
+  systemData.y1 = Number(document.querySelector("#y-1").value)
+
+  console.log({ systemData })
+}
+
+function drawPixel(x, y, adjusteToCenter = false) {
   ctx.fillStyle = "#000";
 
   if (adjusteToCenter) {

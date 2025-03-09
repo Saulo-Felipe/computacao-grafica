@@ -11,7 +11,7 @@
 <body>
 
   <main class="w-[100vw] h-[100vh] flex">
-    <div class="flex-[0.25] bg-gray-100 p-10 flex flex-col gap-5">
+    <div class="flex-[0.25] bg-gray-100 p-10 flex flex-col gap-5" id="menu">
       <div class="flex flex-col gap-2">
         <label>Forma</label>
         <select class="w-full p-2 rounded-md border" value="straight-dda" id="form-type">
@@ -45,7 +45,7 @@
           <label>Centro X:</label>
           <input class="w-full p-2 rounded-md border" type="number" id="center-x" />
         </div>
-  
+
         <div class="flex flex-col gap-2 midpoint trigonometric elipse explicit-equation hidden">
           <label>Centro Y:</label>
           <input class="w-full p-2 rounded-md border" type="number" id="center-y" />
@@ -60,7 +60,7 @@
           <label>Y 1:</label>
           <input class="w-full p-2 rounded-md border" type="number" id="y-1" />
         </div>
-        
+
         <div class="flex flex-col gap-2 straight-dda straight-midpoint hidden">
           <label>X 2:</label>
           <input class="w-full p-2 rounded-md border" type="number" id="x-2" />
@@ -81,7 +81,7 @@
           <option value="scale">Escala</option>
           <option value="reflection">Reflexão</option>
           <option value="shear">Cisalhamento</option>
-          
+
         </select>
       </div>
 
@@ -138,15 +138,14 @@
     </div>
 
     <div class="flex-[0.75] bg-gray-200 flex items-center justify-center">
-      <div class="w-[1920px] h-[1080px] relative bg-white">
+      <div class="w-[1280px] h-[720px] relative bg-white">
         <span class="absolute w-[1px] h-full bg-black left-1/2"></span>
         <span class="absolute h-[1px] w-full bg-black top-1/2"></span>
-        <canvas width="1920px" height="1080px" class="border-[1px] border-black absolute" id="canvas"></canvas>
+        <canvas width="1280px" height="720px" class="border-[1px] border-black absolute" id="canvas"></canvas>
       </div>
     </div>
   </main>
 
-  <script src="script.js"></script>
   <script src="./pixel/pixel.js"></script>
   <script src="./circumference/elips.js"></script>
   <script src="./circumference/midpoint.js"></script>
@@ -154,6 +153,7 @@
   <script src="./circumference/explicit.js"></script>
   <script src="./straight/dda.js"></script>
   <script src="./straight/midpoint.js"></script>
+  <script src="script.js"></script>
 </body>
 
 </html>
