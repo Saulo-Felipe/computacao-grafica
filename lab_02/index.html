@@ -15,6 +15,7 @@
       <div class="flex flex-col gap-2">
         <label>Forma</label>
         <select class="w-full p-2 rounded-md border" value="straight-dda" id="form-type">
+          <option value="pixel">Plotar Pixel</option>
           <option value="elipse">Circunferência - Elipse</option>
           <option value="midpoint">Circunfêrencia - Ponto médio</option>
           <option value="explicit-equation">Circunfêrencia - Equação Explicita</option>
@@ -25,12 +26,12 @@
       </div>
 
       <div id="alterable" class="flex flex-col gap-2">
-        <div class="flex flex-col gap-2 elipse">
+        <div class="flex flex-col gap-2 elipse hidden">
           <label>Semi-eixo maior:</label>
           <input class="w-full p-2 rounded-md border" type="number" id="semi-axle-max" />
         </div>
 
-        <div class="flex flex-col gap-2 elipse">
+        <div class="flex flex-col gap-2 elipse hidden">
           <label>Semi-eixo menor:</label>
           <input class="w-full p-2 rounded-md border" type="number" id="semi-axle-min" />
         </div>
@@ -40,22 +41,22 @@
           <input class="w-full p-2 rounded-md border" type="number" id="radius" />
         </div>
 
-        <div class="flex flex-col gap-2 midpoint trigonometric elipse explicit-equation">
+        <div class="flex flex-col gap-2 midpoint trigonometric elipse explicit-equation hidden">
           <label>Centro X:</label>
           <input class="w-full p-2 rounded-md border" type="number" id="center-x" />
         </div>
   
-        <div class="flex flex-col gap-2 midpoint trigonometric elipse explicit-equation">
+        <div class="flex flex-col gap-2 midpoint trigonometric elipse explicit-equation hidden">
           <label>Centro Y:</label>
           <input class="w-full p-2 rounded-md border" type="number" id="center-y" />
         </div>
 
-        <div class="flex flex-col gap-2 straight-dda straight-midpoint hidden">
+        <div class="flex flex-col gap-2 straight-dda straight-midpoint pixel">
           <label>X 1:</label>
           <input class="w-full p-2 rounded-md border" type="number" id="x-1" />
         </div>
 
-        <div class="flex flex-col gap-2 straight-dda straight-midpoint hidden">
+        <div class="flex flex-col gap-2 straight-dda straight-midpoint pixel">
           <label>Y 1:</label>
           <input class="w-full p-2 rounded-md border" type="number" id="y-1" />
         </div>
@@ -137,15 +138,16 @@
     </div>
 
     <div class="flex-[0.75] bg-gray-200 flex items-center justify-center">
-      <div class="w-[600px] h-[600px] relative bg-white">
+      <div class="w-[1920px] h-[1080px] relative bg-white">
         <span class="absolute w-[1px] h-full bg-black left-1/2"></span>
         <span class="absolute h-[1px] w-full bg-black top-1/2"></span>
-        <canvas width="600px" height="600px" class="border-[1px] border-black absolute" id="canvas"></canvas>
+        <canvas width="1920px" height="1080px" class="border-[1px] border-black absolute" id="canvas"></canvas>
       </div>
     </div>
   </main>
 
   <script src="script.js"></script>
+  <script src="./pixel/pixel.js"></script>
   <script src="./circumference/elips.js"></script>
   <script src="./circumference/midpoint.js"></script>
   <script src="./circumference/trigonometric.js"></script>

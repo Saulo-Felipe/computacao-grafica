@@ -28,6 +28,7 @@ function plot() {
   ctx.clearRect(0, 0, canvasWidth, canvasHeight);
   
   const data = {
+    "pixel": pixel,
     "elipse": elipse, // elipse
     "midpoint": midpoint, // Ponto médio
     "explicit-equation": explicit, // Equação explicita +18
