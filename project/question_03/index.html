@@ -4,15 +4,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PROJETO DO FINAL DOS TEMPOS</title>
+  <title>PROJETO DE CG</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>
+  <header class="w-full bg-gray-200 p-4 flex justify-between items-center shadow-md">
+    <h1 class="text-xl font-bold">COMPUTAÇÃO GRÁFICA</h1>
+    <nav>
+      <ul class="flex gap-4">
+        <li><a href="../../laboratorio_01/index.html" class="hover:underline">Laboratório 1</a></li>
+        <li><a href="#" class="hover:underline">Laboratório 2</a></li>
+      </ul>
+    </nav>
+  </header>
 
   <main class="w-[100vw] h-[100vh] flex">
     <div class="flex-[0.25] bg-gray-100 p-10 flex flex-col gap-5">
-
       <div class="flex flex-col gap-2 ">
         <label>Dimensão da trasformação</label>
 
@@ -27,25 +35,25 @@
         <div id="alterable" class="flex flex-col gap-2">
           <div class="flex flex-row gap-2 triangle">
             <input class="w-1/2 p-2 rounded-md border" type="number" id="x1" placeholder="X1" />
-          
+
             <input class="w-1/2 p-2 rounded-md border" type="number" id="y1" placeholder="Y1" />
           </div>
-  
+
           <div class="flex flex-row gap-2 triangle">
             <input class="w-1/2 p-2 rounded-md border" type="number" id="x2" placeholder="X2" />
-          
+
             <input class="w-1/2 p-2 rounded-md border" type="number" id="y2" placeholder="Y2" />
           </div>
-  
+
           <div class="flex flex-row gap-2 triangle">
             <input class="w-1/2 p-2 rounded-md border" type="number" id="x3" placeholder="X3" />
-          
+
             <input class="w-1/2 p-2 rounded-md border" type="number" id="y3" placeholder="Y3" />
           </div>
 
           <div class="flex flex-row gap-2 triangle">
             <input class="w-1/2 p-2 rounded-md border" type="number" id="x4" placeholder="X4" />
-          
+
             <input class="w-1/2 p-2 rounded-md border" type="number" id="y4" placeholder="Y4" />
           </div>
         </div>
@@ -102,7 +110,7 @@
             <label>sh:</label>
             <input class="p-2 rounded-md border w-[-webkit-fill-available]" type="number" id="sh" />
           </div>
-        
+
           <div class="flex flex-col w-[calc(50%_-_0.25rem)]">
             <label>sv:</label>
             <input class="p-2 rounded-md border w-[-webkit-fill-available]" type="number" id="sv" />
