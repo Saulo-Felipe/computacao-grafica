@@ -8,18 +8,30 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
-    <header class="w-full bg-gray-200 p-4 flex justify-between items-center shadow-md">
+<body class="h-[calc(100vh)] flex flex-col">
+    <header class="bg-gray-200 p-4 flex justify-between items-center shadow-md border-b border-black">
         <h1 class="text-xl font-bold">COMPUTAÇÃO GRÁFICA</h1>
         <nav>
             <ul class="flex gap-4">
                 <li><a href="#" class="hover:underline">Laboratório 1</a></li>
                 <li><a href="../lab_02/index.html" class="hover:underline">Laboratório 2</a></li>
+                <div class="cursor-pointer transition-all hover:scale-110" id="open-full-screen">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-minimize">
+                        <path d="M8 3v3a2 2 0 0 1-2 2H3" />
+                        <path d="M21 8h-3a2 2 0 0 1-2-2V3" />
+                        <path d="M3 16h3a2 2 0 0 1 2 2v3" />
+                        <path d="M16 21v-3a2 2 0 0 1 2-2h3" />
+                    </svg>
+                </div>
             </ul>
         </nav>
     </header>
-    <main class="w-[100vw] h-[100vh] flex">
-        <div class="flex-[0.15] bg-gray-100 p-10 flex flex-col gap-5" id="menu">
+
+    <main class="w-full h-[inherit] overflow-y-auto flex bg-gray-300">
+        <div class="p-6 flex flex-col gap-5 w-[20vw] h-[-webkit-fill-available] bg-gray-200 border-r border-black"
+            id="menu">
             <div class="flex flex-col gap-2">
                 <label>Lab 01</label>
                 <select class="w-full p-2 rounded-md border" value="straight-dda" id="form-type">
@@ -63,7 +75,15 @@
                         <input class="w-full p-2 rounded-md border" type="number" id="y-max" />
                     </div>
                 </div>
+            </div>
 
+            <div class="flex flex-col gap-2">
+                <button class="border p-2 px-6 rounded-md bg-green-600 text-white" id="handle-plot">Plotar</button>
+                <button class="border p-2 px-6 rounded-md bg-gray-400 text-white" id="clear">Limpar</button>
+            </div>
+
+
+            <div class="bg-gray-300 border border-black p-2 rounded-md mt-2">
                 <div class="flex flex-row gap-2">
                     <div class="flex flex-col gap-2 straight-dda straight-midpoint pixel">
                         <label>Largura:</label>
@@ -75,31 +95,26 @@
                         <input class="w-full p-2 rounded-md border" type="number" id="altura" />
                     </div>
                 </div>
-            </div>
 
-            <div class="flex justify-center">
-                <button class="border p-2 px-6 rounded-md bg-blue-600 text-white" id="btn-definir-resolucao">
+                <button class="border p-2 px-6 rounded-md bg-blue-600 text-white w-full mt-2"
+                    id="btn-definir-resolucao">
                     Definir Resolução
                 </button>
             </div>
 
-            <div class="grid grid-cols-2 gap-4">
-                <button class="border p-2 px-6 rounded-md bg-gray-400 text-white">Limpar</button>
-                <button class="border p-2 px-6 rounded-md bg-green-600 text-white" id="handle-plot">Plotar</button>
-            </div>
-
         </div>
 
-        <div class="flex-[0.85] bg-gray-200 flex items-center justify-center">
-            <div class="w-[600px] h-[600px] relative bg-white">
-                <span class="absolute w-[1px] h-full bg-black left-1/2"></span>
-                <span class="absolute h-[1px] w-full bg-black top-1/2"></span>
-                <canvas width="600px" height="600px" class="border-[1px] border-black absolute" id="canvas"></canvas>
+        <div class="p-6 flex-1 overflow-auto" id="full-screen-container">
+            <div class="bg-white relative w-max h-max">
+                <canvas width="600px" height="600px" class="border-[1px] border-black" id="canvas"></canvas>
+                <span class="absolute w-[1px] h-full top-0 bg-black left-1/2"></span>
+                <span class="absolute h-[1px] w-full left-0 bg-black top-1/2"></span>
             </div>
         </div>
     </main>
 
     <script src="./index.js"></script>
+    <script src="./script.js"></script>
 </body>
 
 </html>

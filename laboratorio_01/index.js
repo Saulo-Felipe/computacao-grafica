@@ -35,7 +35,7 @@ function plot() {
         const { dcx, dcy } = ndc_to_dc(ndc_x, ndc_y, ndh, ndv);
         console.log(`DC: (${dcx}, ${dcy})`);
         // Desenha o pixel no canvas
-        drawPixel(x, y); 
+        drawPixel(x, y);
 
     } else {
         alert("Por favor, insira valores válidos para X, Y, X-Min, X-Max, Y-Min e Y-Max!");
@@ -60,7 +60,7 @@ function drawPixel(x, y, adjusteToCenter = true) {
 // Função para converter coordenadas do usuário para NDC
 function user_to_ndc(x, y, x_min, x_max, y_min, y_max) {
     const ndc_x = 2 * (x - x_min) / (x_max - x_min) - 1;
-    const ndc_y = 2 * (y - y_min) / (y_max - y_min) - 1;  
+    const ndc_y = 2 * (y - y_min) / (y_max - y_min) - 1;
     return { ndc_x, ndc_y };
 }
 
@@ -73,33 +73,29 @@ function ndc_to_dc(ndc_x, ndc_y, ndh, ndv) {
 }
 
 // Configuração do evento para definir a resolução do canvas
-document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("btn-definir-resolucao").addEventListener("click", function () {
-        // Pegando os valores digitados nos inputs
-        const largura = document.getElementById("largura").value;
-        const altura = document.getElementById("altura").value;
-        const divContainer = canvas.parentElement; // Obtém a div que envolve o canvas
+document.getElementById("btn-definir-resolucao").addEventListener("click", function () {
+    // Pegando os valores digitados nos inputs
+    const largura = document.getElementById("largura").value;
+    const altura = document.getElementById("altura").value;
+    const divContainer = canvas.parentElement; // Obtém a div que envolve o canvas
 
-        // Verifica se os valores são válidos
-        if (largura > 0 && altura > 0) {
-            // Modifica o tamanho do canvas
-            canvas.width = largura;
-            canvas.height = altura;
+    // Verifica se os valores são válidos
+    if (largura > 0 && altura > 0) {
+        // Modifica o tamanho do canvas
+        canvas.width = largura;
+        canvas.height = altura;
 
-            // Ajusta o tamanho visualmente (CSS)
-            canvas.style.width = `${largura}px`;
-            canvas.style.height = `${altura}px`;
+        // Ajusta o tamanho visualmente (CSS)
+        canvas.style.width = `${largura}px`;
+        canvas.style.height = `${altura}px`;
 
-            // Modifica também o tamanho da div que contém o canvas
-            divContainer.style.width = `${largura}px`;
-            divContainer.style.height = `${altura}px`;
+        // Modifica também o tamanho da div que contém o canvas
+        divContainer.style.width = `${largura}px`;
+        divContainer.style.height = `${altura}px`;
 
-            // Limpa o canvas ao modificar o tamanho
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            alert(`Resolução definida para ${largura}x${altura}`);
-        } else {
-            alert("Por favor, insira valores válidos para a largura e altura.");
-        }
-    });
+        // Limpa o canvas ao modificar o tamanho
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    } else {
+        alert("Por favor, insira valores válidos para a largura e altura.");
+    }
 });
