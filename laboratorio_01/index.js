@@ -35,7 +35,7 @@ function plot() {
         const { dcx, dcy } = ndc_to_dc(ndc_x, ndc_y, ndh, ndv);
         console.log(`DC: (${dcx}, ${dcy})`);
         // Desenha o pixel no canvas
-        drawPixel(x, y);
+        drawPixel(dcx, dcy);
 
     } else {
         alert("Por favor, insira valores válidos para X, Y, X-Min, X-Max, Y-Min e Y-Max!");
@@ -51,7 +51,7 @@ function drawPixel(x, y, adjusteToCenter = true) {
     if (adjusteToCenter) {
         const canvasX = Math.round(canvasWidth / 2 + x);
         const canvasY = Math.round(canvasHeight / 2 - y);
-        return ctx.fillRect(canvasX, canvasY, 2, 2);
+        return ctx.fillRect(canvasX, canvasY, 0, 0);
     }
 
     ctx.fillRect(x, canvasHeight - y - 1, 1, 1);

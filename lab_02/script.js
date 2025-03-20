@@ -43,8 +43,6 @@ function plot() {
   const formType = document.getElementById("form-type").value;
   ctx.clearRect(0, 0, canvasWidth, canvasHeight);
 
-  window.open(`http://localhost:5500/lab_02/?hidden-menu=true&systemData=${JSON.stringify(systemData)}`, "_blank", "width=1280,height=720")
-
   const data = {
     "pixel": pixel,
     "elipse": elipse, // elipse
