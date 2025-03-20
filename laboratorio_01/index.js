@@ -66,8 +66,8 @@ function user_to_ndc(x, y, x_min, x_max, y_min, y_max) {
 
 // Função para converter NDC para DC
 function ndc_to_dc(ndc_x, ndc_y, ndh, ndv) {
-    const dcx = Math.round((ndc_x + 1) * (canvasHeight / 2));
-    const dcy = Math.round((ndc_y + 1) * (canvasWidth / 2));
+    const dcx = Math.round((ndc_x + 1) * (canvasWidth / 2));
+    const dcy = Math.round((ndc_y + 1) * (canvasHeight / 2));
 
     return { dcx, dcy };
 }
