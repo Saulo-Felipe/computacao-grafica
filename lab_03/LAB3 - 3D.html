@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <title>Composição 3D</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+</head>
+
+<body>
+
+    <main class="w-[100vw] h-[100vh] flex">
+        <div class="flex-[0.25] bg-gray-100 flex flex-col">
+            <div class="my-4 text-lg text-center font-bold">
+                <h1>Composição 3D</h1>
+            </div>
+            <!-- Inputs da Figura -->
+            <div class="flex flex-col gap-4 max-h-[25vh] min-h-[25vh] w-full overflow-y-auto">
+
+                <div class="flex flex-col gap-2 px-5 m-2" id="pontos-figura">
+                    <div class="flex flex-row gap-2">
+                        <div class="col">
+                            <input id="x-figura" name="x-figura" type="text"
+                                class="w-32 border border-gray-300 rounded-md px-2 " placeholder="X da Origem">
+                        </div>
+                        <div class="col">
+                            <input id="y-figura" name="y-figura" type="text"
+                                class="w-32 border border-gray-300 rounded-md px-2" placeholder="Y da Origem">
+                        </div>
+                        <div class="col">
+                            <input id="z-figura" name="z-figura" type="text"
+                                class="w-32 border border-gray-300 rounded-md px-2" placeholder="Z da Origem">
+                        </div>
+                    </div>
+
+                    <div class="flex flex-row gap-2">
+                        <div class="col">
+                            <input id="comprimento" name="comprimento" type="text"
+                                class="w-32 border border-gray-300 rounded-md px-2" placeholder="Comprimento">
+                        </div>
+                        <div class="col">
+                            <input id="largura" name="largura" type="text"
+                                class="w-32 border border-gray-300 rounded-md px-2" placeholder="Largura">
+                        </div>
+                        <div class="col">
+                            <input id="altura" name="altura" type="text"
+                                class="w-32 border border-gray-300 rounded-md px-2" placeholder="Altura">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <button id="desenhar-figura"
+                        class="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 w-full">Desenhar</button>
+                </div>
+            </div>
+            <hr>
+
+            <!-- Inputs das Transformações -->
+            <div class="flex flex-col gap-4 items-center max-h-[55vh] min-h-[55vh] w-full overflow-y-auto">
+                <div class="mt-2 text-md text-center">
+                    <h2>Transformações:</h2>
+                </div>
+
+                <div id="opcoes-transformacao" class="flex flex-col gap-10 p-5 m-2 items-center">
+                    <div>
+                        <input name="transformacoes[]" type="text" class="border border-gray-300 rounded-md"
+                            placeholder="Transformacao">
+                    </div>
+
+                    <div class="flex flex-row gap-2">
+                        <div>
+                            <input name="valor1-transformacoes[]" type="text"
+                                class="w-24 border border-gray-300 rounded-md px-2" placeholder="Valor 1">
+                        </div>
+                        <div>
+                            <input name="valor2-transformacoes[]" type="text"
+                                class="w-24 border border-gray-300 rounded-md px-2" placeholder="Valor 2">
+                        </div>
+                        <div>
+                            <input name="valor3-transformacoes[]" type="text"
+                                class="w-24 border border-gray-300 rounded-md px-2" placeholder="Valor 3">
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="flex flex-row justify-center gap-2" role="group" aria-label="Basic mixed styles example">
+                    <button type="button" class="px-4 py-2 border bg-sky-500 text-white rounded-md hover:bg-sky-600"
+                        onclick="removerCampoTransformacao()">-</button>
+                    <button type="button" class="px-4 py-2 border bg-sky-500 text-white rounded-md hover:bg-sky-600"
+                        onclick="adicionarCampoTransformacao()">+</button>
+                </div>
+
+
+                <div class="flex flex-col gap-2 justify-center w-full px-2">
+                    <button id="transformar"
+                        class="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 w-full">
+                        Transformar
+                    </button>
+                    <div>
+                        <input class="form-check-input" type="checkbox" id="deixa-rastro" checked>
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Manter Figura Original</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rotação dos Eixos -->
+            <div class="flex flex-row gap-2">
+
+                <div>
+                    <label for="slide-eixo-x" class="form-label" style="color: #FF00FF">Rotacao X</label>
+                    <input type="range" class="form-range" min="0" max="90" step="1" id="slider-eixo-x">
+                </div>
+
+                <div>
+                    <label for="slide-eixo-y" class="form-label " style="color: #CCCCCC">Rotacao Y</label>
+                    <input type="range" class="form-range" min="0" max="90" step="1" id="slider-eixo-y">
+                </div>
+
+                <div>
+                    <label for="slide-eixo-z" class="form-label " style="color: #FFA500">Rotacao Z</label>
+                    <input type="range" class="form-range" min="0" max="90" step="1" id="slider-eixo-z">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="flex-[0.75] bg-gray-200 flex items-center justify-center">
+            <!-- Sistema de coordenadas cartesiano  -->
+            <div class="col-xl-7 pt-3">
+                <div id="screen"></div>
+            </div>
+        </div>
+
+
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"
+        integrity="sha512-3RlxD1bW34eFKPwj9gUXEWtdSMC59QqIqHnD8O/NoTwSJhgxRizdcFVQhUMFyTp5RwLTDL0Lbcqtl8b7bFAzog=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./js/helpers.js"></script>
+    <script src="./js/3DComposição.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+
+</html>
