@@ -245,22 +245,22 @@ function translacao(matriz, tx, ty, tz, dimension = '2d') {
   return result
 }
 
-function cisalhamentoX(matriz, a, dimension = '2d', x = 0, y = 0, z = 0) {
+function cisalhamentoX(matriz, a, b, dimension = '2d', x = 0, y = 0, z = 0) {
   let result = [];
 
   if (dimension === '2d') {
     let matrizCisalhamentoX = [[1, a], [0, 1]];
 
-    result = translacaoOrigem(matriz, x, y, 0, '2d');
+    // result = translacaoOrigem(matriz, x, y, 0, '2d');
 
-    result = multiplicationMatrix(matrizCisalhamentoX, result);
+    result = multiplicationMatrix(matrizCisalhamentoX, matriz);
 
-    result = translacaoParaInicio(result, x, y, 0, '2d');
+    // result = translacaoParaInicio(result, x, y, 0, '2d');
   } else if (dimension === '3d') {
-    let matrizCisalhamentoX = [[1, a, 0], [0, 1, 0], [0, 0, 1]];
-    result = translacaoOrigem(matriz, x, y, z, '3d');
-    result = multiplicationMatrix(matrizCisalhamentoX, result);
-    result = translacaoParaInicio(result, x, y, z, '3d');
+    let matrizCisalhamentoX = [ [1,0,0] , [a,1 , 0] , [b,0,1]];
+    // result = translacaoOrigem(matriz, x, y, z, '3d');
+    result = multiplicationMatrix(matrizCisalhamentoX, matriz);
+    // result = translacaoParaInicio(result, x, y, z, '3d');
   }
   if (!result || result.length === 0) {
     console.error('Matriz após cisalhamento está vazia ou inválida:', result);
@@ -269,19 +269,19 @@ function cisalhamentoX(matriz, a, dimension = '2d', x = 0, y = 0, z = 0) {
   return result;
 }
 
-function cisalhamentoY(matriz, b, dimension = '2d', x = 0, y = 0, z = 0) {
+function cisalhamentoY(matriz, a, b, dimension = '2d', x = 0, y = 0, z = 0) {
   let result = [];
 
   if (dimension === '2d') {
     let matrizCisalhamentoY = [[1, 0], [b, 1]];
-    result = translacaoOrigem(matriz, x, y, 0, '2d');
-    result = multiplicationMatrix(matrizCisalhamentoY, result);
-    result = translacaoParaInicio(result, x, y, 0, '2d');
+    // result = translacaoOrigem(matriz, x, y, 0, '2d');
+    result = multiplicationMatrix(matrizCisalhamentoY, matriz);
+    // result = translacaoParaInicio(result, x, y, 0, '2d');
   } else if (dimension === '3d') {
-    let matrizCisalhamentoY = [[1, 0, 0], [b, 1, 0], [0, 0, 1]];
-    result = translacaoOrigem(matriz, x, y, z, '3d');
-    result = multiplicationMatrix(matrizCisalhamentoY, result);
-    result = translacaoParaInicio(result, x, y, z, '3d');
+    let matrizCisalhamentoY = [ [1 , a ,0] , [0 ,1,0] , [0,b,1]];
+    // result = translacaoOrigem(matriz, x, y, z, '3d');
+    result = multiplicationMatrix(matrizCisalhamentoY, matriz);
+    // result = translacaoParaInicio(result, x, y, z, '3d');
   }
 
   return result;
